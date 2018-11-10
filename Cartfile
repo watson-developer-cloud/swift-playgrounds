@@ -1,0 +1,2 @@
+github "watson-developer-cloud/Swift-SDK" "v1.0"
+github "watson-developer-cloud/RestKit" "swift-sdk-1.0"

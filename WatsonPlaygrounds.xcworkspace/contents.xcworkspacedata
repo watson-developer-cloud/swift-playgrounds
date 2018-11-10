@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
+      location = "group:AssistantV1.playground">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "Sources">
+      <FileRef
+         location = "group:Sources/WatsonCredentials.swift">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:Carthage/Checkouts/Swift-SDK/WatsonDeveloperCloud.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/RestKit/RestKit.xcodeproj">
+   </FileRef>
+</Workspace>
