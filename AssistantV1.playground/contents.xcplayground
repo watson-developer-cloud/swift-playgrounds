@@ -6,5 +6,10 @@
         <page name='Workspaces'/>
         <page name='Intents'/>
         <page name='Examples'/>
+        <page name='Counterexamples'/>
+        <page name='Entities'/>
+        <page name='Mentions'/>
+        <page name='Values'/>
+        <page name='Synonyms'/>
     </pages>
 </playground>

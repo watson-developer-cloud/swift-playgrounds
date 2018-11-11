@@ -98,3 +98,78 @@ extension Example: CustomStringConvertible {
     }
 }
 
+// Counterexamples
+
+extension CounterexampleCollection: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension Counterexample: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+// Entities
+
+extension EntityCollection: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension Entity: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension EntityExport: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+// Mentions
+
+extension EntityMentionCollection: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+// Values
+
+extension ValueCollection: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension Value: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension ValueExport: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+// Synonyms
+
+extension SynonymCollection: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension Synonym: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}

@@ -20,8 +20,6 @@ assistant.createIntent(workspaceID: workspaceID, intent: "hello", examples: [Cre
         print(error?.localizedDescription ?? "unexpected error")
         return
     }
-
-    print(intent)
 }
 
 //:### List user input examples

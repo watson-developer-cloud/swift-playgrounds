@@ -46,3 +46,13 @@ if let serviceURL = WatsonCredentials.AssistantV1URL {
 //: [Intents](Intents)
 //:
 //: [Examples](Examples)
+//:
+//: [Counterexamples](Counterexamples)
+//:
+//: [Entities](Entities)
+//:
+//: [Mentions](Mentions)
+//:
+//: [Values](Values)
+//:
+//: [Synonyms](Synonyms)
