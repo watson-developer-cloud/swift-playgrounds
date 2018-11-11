@@ -7,6 +7,9 @@
    <FileRef
       location = "group:AssistantV1.playground">
    </FileRef>
+   <FileRef
+      location = "group:ToneAnalyzerV3.playground">
+   </FileRef>
    <Group
       location = "container:"
       name = "Sources">
