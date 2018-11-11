@@ -173,3 +173,25 @@ extension Synonym: CustomStringConvertible {
         return prettyPrint(object: self) ?? "broke"
     }
 }
+
+// Dialog nodes
+
+extension DialogNodeCollection: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension DialogNode: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+// Logs
+
+extension LogCollection: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}

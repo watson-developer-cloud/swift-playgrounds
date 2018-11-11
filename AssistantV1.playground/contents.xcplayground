@@ -11,5 +11,8 @@
         <page name='Mentions'/>
         <page name='Values'/>
         <page name='Synonyms'/>
+        <page name='Dialog nodes'/>
+        <page name='Logs'/>
+        <page name='User data'/>
     </pages>
 </playground>

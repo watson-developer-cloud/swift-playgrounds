@@ -37,22 +37,3 @@ if let serviceURL = WatsonCredentials.AssistantV1URL {
 
 // TODO: Fill this in
 
-//:## Methods
-//:
-//: [Message](Message)
-//:
-//: [Workspaces](Workspaces)
-//:
-//: [Intents](Intents)
-//:
-//: [Examples](Examples)
-//:
-//: [Counterexamples](Counterexamples)
-//:
-//: [Entities](Entities)
-//:
-//: [Mentions](Mentions)
-//:
-//: [Values](Values)
-//:
-//: [Synonyms](Synonyms)
