@@ -3,5 +3,8 @@
     <pages>
         <page name='AssistantV1'/>
         <page name='Message'/>
+        <page name='Workspaces'/>
+        <page name='Intents'/>
+        <page name='Examples'/>
     </pages>
 </playground>
