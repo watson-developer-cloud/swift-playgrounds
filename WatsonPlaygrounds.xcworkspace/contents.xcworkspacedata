@@ -8,6 +8,30 @@
       location = "group:AssistantV1.playground">
    </FileRef>
    <FileRef
+      location = "group:AssistantV2.playground">
+   </FileRef>
+   <FileRef
+      location = "group:DiscoveryV1.playground">
+   </FileRef>
+   <FileRef
+      location = "group:LanguageTranslatorV3.playground">
+   </FileRef>
+   <FileRef
+      location = "group:NaturalLanguageClassifierV1.playground">
+   </FileRef>
+   <FileRef
+      location = "group:NaturalLanguageUnderstandingV1.playground">
+   </FileRef>
+   <FileRef
+      location = "group:PersonalityInsightsV3.playground">
+   </FileRef>
+   <FileRef
+      location = "group:SpeechToTextV1.playground">
+   </FileRef>
+   <FileRef
+      location = "group:TextToSpeechV1.playground">
+   </FileRef>
+   <FileRef
       location = "group:ToneAnalyzerV3.playground">
    </FileRef>
    <FileRef
