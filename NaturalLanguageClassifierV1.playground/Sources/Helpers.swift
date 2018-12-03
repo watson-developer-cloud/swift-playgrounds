@@ -1,0 +1,100 @@
+
+import NaturalLanguageClassifierV1
+
+public func setupNaturalLanguageClassifierV1() -> NaturalLanguageClassifier {
+
+    let apiKey = WatsonCredentials.NaturalLanguageClassifierV1APIKey
+
+    let naturalLanguageClassifier = NaturalLanguageClassifier(apiKey: apiKey)
+
+    // Set the URL for the service endpoint if needed
+    if let serviceURL = WatsonCredentials.NaturalLanguageClassifierV1URL {
+        naturalLanguageClassifier.serviceURL = serviceURL
+    }
+
+    return naturalLanguageClassifier
+}
+
+// Return a classifierID
+public func getClassifierID() -> String? {
+
+    if WatsonCredentials.NaturalLanguageClassifierV1ClassifierID != nil {
+        return WatsonCredentials.NaturalLanguageClassifierV1ClassifierID
+    }
+
+    let naturalLanguageClassifier = setupNaturalLanguageClassifierV1()
+
+    var classifierID: String?
+    naturalLanguageClassifier.listClassifiers() {
+        response, error in
+
+        guard let result = response?.result else {
+            assertionFailure(error?.localizedDescription ?? "unexpected error")
+            return
+        }
+
+        classifierID = result.classifiers.first?.classifierID
+        if classifierID == nil {
+            let metadata = Bundle.main.url(forResource: "metadata", withExtension: "json")!
+            let trainingData = Bundle.main.url(forResource: "weather_data_train", withExtension: "csv")!
+
+            naturalLanguageClassifier.createClassifier(metadata: metadata, trainingData: trainingData) {
+                response, error in
+
+                guard let classifier = response?.result else {
+                    assertionFailure(error?.localizedDescription ?? "unexpected error")
+                    return
+                }
+
+                classifierID = classifier.classifierID
+            }
+        }
+    }
+
+    while classifierID == nil { sleep(1) }
+    return classifierID
+}
+
+public var encoder: JSONEncoder {
+    let encoder = JSONEncoder()
+    do {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        encoder.dateEncodingStrategy = .formatted(formatter)
+    }
+    encoder.outputFormatting = .prettyPrinted
+    return encoder
+}
+
+func prettyPrint<T : Encodable>(object: T) -> String? {
+    do {
+        let data = try encoder.encode(object)
+        return String(data: data, encoding: .utf8)
+    } catch _ {
+        return nil
+    }
+}
+
+// Classify text
+
+extension Classification: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+// Manage classifiers
+
+extension ClassifierList: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension Classifier: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
