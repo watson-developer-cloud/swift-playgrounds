@@ -23,10 +23,10 @@ You can install Carthage with [Homebrew](http://brew.sh/):
 Use the following steps to install the Watson Swift SDK for use in the Watson Swift Playgrounds:
 
 ```
-git clone git@github.com:mkistler/swift-playground.git
-cd swift-playground
+git clone git@github.com:watson-developer-cloud/swift-playgrounds.git
+cd swift-playgrounds
 carthage update --no-build
-open WatsonPlayground.xcworkspace
+open WatsonPlaygrounds.xcworkspace
 ```
 
 ### Build the Frameworks
