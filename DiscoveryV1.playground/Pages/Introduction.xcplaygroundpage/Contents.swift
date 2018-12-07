@@ -18,3 +18,22 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 //:```
 
 import DiscoveryV1
+
+//:## Authentication
+
+let version = "2018-10-15"
+let apiKey = WatsonCredentials.DiscoveryV1APIKey
+
+let discovery = Discovery(version: version, apiKey: apiKey)
+
+//:## Service URL
+
+// Set the URL for the service endpoint if needed
+if let serviceURL = WatsonCredentials.DiscoveryV1URL {
+    discovery.serviceURL = serviceURL
+}
+
+//:## Error handling
+
+// TODO: Fill this in
+
