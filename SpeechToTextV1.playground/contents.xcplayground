@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='5.0' target-platform='ios' executeOnSourceChanges='false'>
-    <timeline fileName='timeline.xctimeline'/>
+<playground version='6.0' target-platform='ios' executeOnSourceChanges='false'>
+    <pages>
+        <page name='Introduction'/>
+        <page name='Models'/>
+        <page name='Synchronous'/>
+        <page name='Asynchronous'/>
+        <page name='Custom language models'/>
+        <page name='Custom corpora'/>
+        <page name='Custom words'/>
+        <page name='Custom acoustic models'/>
+        <page name='Custom audio resources'/>
+        <page name='User data'/>
+    </pages>
 </playground>

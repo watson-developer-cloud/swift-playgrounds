@@ -50,4 +50,7 @@
    <FileRef
       location = "group:Carthage/Checkouts/RestKit/RestKit.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Starscream/Starscream.xcodeproj">
+   </FileRef>
 </Workspace>
