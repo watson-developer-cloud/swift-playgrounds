@@ -14,6 +14,39 @@ public func setupTextToSpeechV1() -> TextToSpeech {
     return textToSpeech
 }
 
+// Return a Voice Model customization ID
+public func getVoiceModelID() -> String! {
+
+    let textToSpeech = setupTextToSpeechV1()
+
+    var modelID: String?
+    textToSpeech.listVoiceModels() {
+        response, error in
+
+        guard let result = response?.result else {
+            assertionFailure(error?.localizedDescription ?? "unexpected error")
+            return
+        }
+
+        modelID = result.customizations.first?.customizationID
+        if modelID == nil {
+            textToSpeech.createVoiceModel(name: "First Model", language: "en-US", description: "First custom voice model") {
+                response, error in
+
+                guard let model = response?.result else {
+                    print(error?.localizedDescription ?? "unexpected error")
+                    return
+                }
+
+                modelID = model.customizationID
+            }
+        }
+    }
+
+    while modelID == nil { sleep(1) }
+    return modelID
+}
+
 public var encoder: JSONEncoder {
     let encoder = JSONEncoder()
     do {
