@@ -55,6 +55,15 @@ To add the credentials for your Watson service instance(s) to the playground pro
 A template for this file is available in `Sources/WatsonCredentialsExample.swift`.
 2. Add credentials to `WatsonCredentials.swift` for the services you plan to use in the playground.
 
+## Troubleshooting
+When attempting to run a playground, you may encounter an error saying that Xcode is unable to find the framework being imported, even if the framework has already been built. Here is the workaround to this issue:
+
+1. Comment out the entire `Helpers.swift` file under the `Sources` directory for the service being tested.
+2. Build the Watson framework (select the scheme in the Xcode scheme picker and type `Cmd-B`)
+3. Uncomment the `Helpers.swift` file.
+4. Run the playground
+
+
 ## License
 
 This project is licensed under Apache 2.0. Full license text is in [LICENSE][LICENSE].
