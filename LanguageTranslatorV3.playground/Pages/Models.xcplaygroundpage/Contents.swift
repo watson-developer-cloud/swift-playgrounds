@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import LanguageTranslatorV3
 
 let languageTranslator = setupLanguageTranslatorV3()
-var modelID: String!
+var modelID: String = ""
 
 //:### List models
 

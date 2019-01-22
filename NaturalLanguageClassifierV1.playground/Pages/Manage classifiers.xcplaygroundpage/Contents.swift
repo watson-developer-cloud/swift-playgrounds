@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import NaturalLanguageClassifierV1
 
 let naturalLanguageClassifier = setupNaturalLanguageClassifierV1()
-var classifierID: String!
+var classifierID: String = ""
 
 //:### List classifiers
 

@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var modelID: String! = getModelID()
+var modelID = getModelID()
 
 //:### List corpora
 

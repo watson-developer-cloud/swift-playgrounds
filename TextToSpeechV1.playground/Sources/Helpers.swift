@@ -15,7 +15,7 @@ public func setupTextToSpeechV1() -> TextToSpeech {
 }
 
 // Return a Voice Model customization ID
-public func getVoiceModelID() -> String! {
+public func getVoiceModelID() -> String {
 
     let textToSpeech = setupTextToSpeechV1()
 
@@ -44,7 +44,7 @@ public func getVoiceModelID() -> String! {
     }
 
     while modelID == nil { sleep(1) }
-    return modelID
+    return modelID!
 }
 
 public var encoder: JSONEncoder {

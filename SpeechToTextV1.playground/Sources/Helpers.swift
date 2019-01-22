@@ -15,7 +15,7 @@ public func setupSpeechToTextV1() -> SpeechToText {
 }
 
 // Return a modelID
-public func getModelID() -> String! {
+public func getModelID() -> String {
 
     let speechToText = setupSpeechToTextV1()
 
@@ -44,7 +44,7 @@ public func getModelID() -> String! {
     }
 
     while modelID == nil { sleep(1) }
-    return modelID
+    return modelID!
 }
 
 public var encoder: JSONEncoder {

@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import VisualRecognitionV3
 
 let visualRecognition = setupVisualRecognitionV3()
-var classifierID: String! = nil
+var classifierID = ""
 
 //:### Retrieve a list of classifiers
 

@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var modelID: String! = "<your-modelid-here>"
+var modelID = "<your-modelid-here>"
 
 //:### List audio resources
 

@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import TextToSpeechV1
 
 let textToSpeech = setupTextToSpeechV1()
-var customizationID: String!
+var customizationID: String = ""
 
 //:### Create a custom model
 

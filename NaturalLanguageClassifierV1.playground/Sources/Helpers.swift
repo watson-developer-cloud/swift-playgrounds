@@ -16,7 +16,7 @@ public func setupNaturalLanguageClassifierV1() -> NaturalLanguageClassifier {
 }
 
 // Return a classifierID
-public func getClassifierID() -> String? {
+public func getClassifierID() -> String {
 
     if WatsonCredentials.NaturalLanguageClassifierV1ClassifierID != nil {
         return WatsonCredentials.NaturalLanguageClassifierV1ClassifierID
@@ -52,7 +52,7 @@ public func getClassifierID() -> String? {
     }
 
     while classifierID == nil { sleep(1) }
-    return classifierID
+    return classifierID!
 }
 
 public var encoder: JSONEncoder {

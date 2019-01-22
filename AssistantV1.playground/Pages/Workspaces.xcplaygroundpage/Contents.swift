@@ -24,7 +24,7 @@ assistant.listWorkspaces() {
 
 //:### Create workspace
 
-var workspaceID = "{workspace_id}"
+var workspaceID = ""
 
 assistant.createWorkspace(name: "API test", description: "Example workspace created via API") {
     response, error in
