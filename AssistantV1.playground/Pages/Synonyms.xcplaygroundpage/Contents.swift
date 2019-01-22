@@ -79,7 +79,7 @@ assistant.updateSynonym(workspaceID: workspaceID, entity: "beverage", value: "or
 //:### Delete entity value synonym
 
 assistant.deleteSynonym(workspaceID: workspaceID, entity: "beverage", value: "orange juice", synonym: "O.J.") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)
@@ -92,7 +92,7 @@ assistant.deleteSynonym(workspaceID: workspaceID, entity: "beverage", value: "or
 // Cleanup
 
 assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

@@ -79,7 +79,7 @@ assistant.updateValue(workspaceID: workspaceID, entity: "beverage", value: "soda
 //:### Delete entity value
 
 assistant.deleteValue(workspaceID: workspaceID, entity: "beverage", value: "beer") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)
@@ -92,7 +92,7 @@ assistant.deleteValue(workspaceID: workspaceID, entity: "beverage", value: "beer
 // Cleanup
 
 assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

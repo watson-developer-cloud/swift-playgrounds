@@ -68,7 +68,7 @@ assistant.updateEntity(workspaceID: workspaceID, entity: "beverage", newDescript
 //:### Delete entity
 
 assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

@@ -56,7 +56,7 @@ naturalLanguageClassifier.getClassifier(classifierID: classifierID) {
 //:### Delete classifier
 
 naturalLanguageClassifier.deleteClassifier(classifierID: classifierID) {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

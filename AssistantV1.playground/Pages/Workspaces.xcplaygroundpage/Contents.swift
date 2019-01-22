@@ -67,7 +67,7 @@ assistant.updateWorkspace(workspaceID: workspaceID, name: "Updated workspace", d
 //:### Delete workspace
 
 assistant.deleteWorkspace(workspaceID: workspaceID) {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

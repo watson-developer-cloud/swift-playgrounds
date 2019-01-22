@@ -12,7 +12,7 @@ let textToSpeech = setupTextToSpeechV1()
 //:### Delete labeled data
 
 textToSpeech.deleteUserData(customerID: "{id}") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

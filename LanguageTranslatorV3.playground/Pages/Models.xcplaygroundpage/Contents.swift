@@ -55,7 +55,7 @@ languageTranslator.getModel(modelID: modelID) {
 //:### Delete model
 
 languageTranslator.deleteModel(modelID: modelID) {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

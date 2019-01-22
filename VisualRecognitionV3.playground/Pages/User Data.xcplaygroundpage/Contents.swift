@@ -12,7 +12,7 @@ let visualRecognition = setupVisualRecognitionV3()
 //:### Delete labeled data
 
 visualRecognition.deleteUserData(customerID: "my-customer-id") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

@@ -77,7 +77,7 @@ assistant.updateExample(workspaceID: workspaceID, intent: intent, text: "Hi ther
 //:### Delete user input example
 
 assistant.deleteExample(workspaceID: workspaceID, intent: intent, text: "Good afternoon") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)
@@ -90,7 +90,7 @@ assistant.deleteExample(workspaceID: workspaceID, intent: intent, text: "Good af
 // Cleanup
 
 assistant.deleteIntent(workspaceID: workspaceID, intent: "hello") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

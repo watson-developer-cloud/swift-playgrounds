@@ -69,7 +69,7 @@ assistant.updateDialogNode(workspaceID: workspaceID, dialogNode: "greeting", new
 //:### Delete dialog node
 
 assistant.deleteDialogNode(workspaceID: workspaceID, dialogNode: "greeting") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

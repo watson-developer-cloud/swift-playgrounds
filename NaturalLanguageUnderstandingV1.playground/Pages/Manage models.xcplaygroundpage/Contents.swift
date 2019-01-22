@@ -25,7 +25,7 @@ naturalLanguageUnderstanding.listModels() {
 //:### Delete model
 
 naturalLanguageUnderstanding.deleteModel(modelID: "model-id") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

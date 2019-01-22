@@ -49,7 +49,7 @@ assistant.listMentions(workspaceID: workspaceID, entity: "beverage") {
 // Cleanup
 
 assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)
@@ -58,7 +58,7 @@ assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
 }
 
 assistant.deleteIntent(workspaceID: workspaceID, intent: "place_order") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

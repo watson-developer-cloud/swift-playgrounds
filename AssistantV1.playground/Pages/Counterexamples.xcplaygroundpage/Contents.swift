@@ -65,7 +65,7 @@ assistant.updateCounterexample(workspaceID: workspaceID, text: "Make me a sandwi
 //:### Delete counterexample
 
 assistant.deleteCounterexample(workspaceID: workspaceID, text: "Make me a cheeseburger") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)
