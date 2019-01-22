@@ -12,10 +12,15 @@ let workspaceID = WatsonCredentials.AssistantV1Workspace
 
 // Setup
 
-assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
-                       values: [CreateValue(value: "water"),
-                                CreateValue(value: "orange juice"),
-                                CreateValue(value: "soda")] ){
+assistant.createEntity(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    values: [
+        CreateValue(value: "water"),
+        CreateValue(value: "orange juice"),
+        CreateValue(value: "soda")
+    ])
+{
     response, error in
 
     guard let entity = response?.result else {
@@ -65,7 +70,12 @@ assistant.getValue(workspaceID: workspaceID, entity: "beverage", value: "orange 
 
 //:### Update entity value
 
-assistant.updateValue(workspaceID: workspaceID, entity: "beverage", value: "soda", newSynonyms: ["pop", "soft drink"]) {
+assistant.updateValue(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    value: "soda",
+    newSynonyms: ["pop", "soft drink"])
+{
     response, error in
 
     guard let value = response?.result else {

@@ -25,7 +25,14 @@ assistant.listIntents(workspaceID: workspaceID) {
 
 //:### Create intent
 
-assistant.createIntent(workspaceID: workspaceID, intent: "hello", examples: [CreateExample(text: "Good morning"), CreateExample(text: "Hi there")]){
+assistant.createIntent(
+    workspaceID: workspaceID,
+    intent: "hello",
+    examples: [
+        CreateExample(text: "Good morning"),
+        CreateExample(text: "Hi there")
+    ])
+{
     response, error in
 
     guard let intent = response?.result else {
@@ -51,7 +58,12 @@ assistant.getIntent(workspaceID: workspaceID, intent: "hello") {
 
 //:### Update intent
 
-assistant.updateIntent(workspaceID: workspaceID, intent: "hello", newDescription: "Updated intent", newExamples: [CreateExample(text: "Good afternoon")]){
+assistant.updateIntent(
+    workspaceID: workspaceID,
+    intent: "hello",
+    newDescription: "Updated intent",
+    newExamples: [CreateExample(text: "Good afternoon")])
+{
     response, error in
 
     guard let intent = response?.result else {

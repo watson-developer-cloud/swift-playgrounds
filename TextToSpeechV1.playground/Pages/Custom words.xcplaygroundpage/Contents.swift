@@ -12,8 +12,10 @@ var customizationID: String! = getVoiceModelID()
 
 //:### Add custom words
 
-let words = [Word(word: "EEE", translation: "<phoneme alphabet=\"ibm\" ph=\"tr1Ipxl.1i\"></phoneme>"),
-             Word(word: "IEEE", translation: "<phoneme alphabet=\"ibm\" ph=\"1Y.tr1Ipxl.1i\"></phoneme>")]
+let words = [
+    Word(word: "EEE", translation: "<phoneme alphabet=\"ibm\" ph=\"tr1Ipxl.1i\"></phoneme>"),
+    Word(word: "IEEE", translation: "<phoneme alphabet=\"ibm\" ph=\"1Y.tr1Ipxl.1i\"></phoneme>")
+]
 textToSpeech.addWords(customizationID: customizationID, words: words) {
     _, error in
 

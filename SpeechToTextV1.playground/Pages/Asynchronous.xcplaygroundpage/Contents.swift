@@ -28,7 +28,13 @@ speechToText.registerCallback(callbackURL: url, userSecret: "ThisIsMySecret") {
 
 let audio = Bundle.main.url(forResource: "audio-file", withExtension: "flac")!
 
-speechToText.createJob(audio: Data(contentsOf: audio), contentType: "audio/flac", callbackURL: url, userToken: "job25", timestamps: true) {
+speechToText.createJob(
+    audio: Data(contentsOf: audio),
+    contentType: "audio/flac",
+    callbackURL: url,
+    userToken: "job25",
+    timestamps: true)
+{
     response, error in
 
     guard let job = response?.result else {

@@ -12,7 +12,11 @@ var modelID: String!
 
 //:### Create a custom language model
 
-speechToText.createLanguageModel(name: "First example language model", baseModelName: "en-US_BroadbandModel", description: "First custom language model example") {
+speechToText.createLanguageModel(
+    name: "First example language model",
+    baseModelName: "en-US_BroadbandModel",
+    description: "First custom language model example")
+{
     response, error in
 
     guard let model = response?.result else {

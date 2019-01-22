@@ -13,7 +13,14 @@ let intent = "hello"
 
 // Setup
 
-assistant.createIntent(workspaceID: workspaceID, intent: "hello", examples: [CreateExample(text: "Good afternoon"), CreateExample(text: "Hi there")]){
+assistant.createIntent(
+    workspaceID: workspaceID,
+    intent: "hello",
+    examples: [
+        CreateExample(text: "Good afternoon"),
+        CreateExample(text: "Hi there")
+    ])
+{
     response, error in
 
     guard let intent = response?.result else {

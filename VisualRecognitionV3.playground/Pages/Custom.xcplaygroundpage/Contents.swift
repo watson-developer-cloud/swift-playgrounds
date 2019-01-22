@@ -30,11 +30,15 @@ let goldenRetriever = Bundle.main.url(forResource: "golden-retriever", withExten
 let husky = Bundle.main.url(forResource: "husky", withExtension: "zip")!
 let cats = Bundle.main.url(forResource: "cats", withExtension: "zip")!
 
-visualRecognition.createClassifier(name: "dogs",
-                                   positiveExamples: ["beagle": beagle,
-                                                      "goldenretriever": goldenRetriever,
-                                                      "husky": husky],
-                                   negativeExamples: cats) {
+visualRecognition.createClassifier(
+    name: "dogs",
+    positiveExamples: [
+        "beagle": beagle,
+        "goldenretriever": goldenRetriever,
+        "husky": husky
+    ],
+    negativeExamples: cats)
+{
     response, error in
 
     guard let result = response?.result else {
@@ -66,9 +70,11 @@ visualRecognition.getClassifier(classifierID: classifierID) {
 let dalmatian = Bundle.main.url(forResource: "dalmatian", withExtension: "zip")!
 let moreCats = Bundle.main.url(forResource: "more-cats", withExtension: "zip")!
 
-visualRecognition.updateClassifier(classifierID: classifierID,
-                                   positiveExamples: ["dalmatian": dalmatian],
-                                   negativeExamples: moreCats) {
+visualRecognition.updateClassifier(
+    classifierID: classifierID,
+    positiveExamples: ["dalmatian": dalmatian],
+    negativeExamples: moreCats)
+{
     response, error in
 
     guard let result = response?.result else {

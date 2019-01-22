@@ -25,10 +25,15 @@ assistant.listEntities(workspaceID: workspaceID) {
 
 //:### Create entity
 
-assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
-                       values: [CreateValue(value: "water"),
-                                CreateValue(value: "orange juice"),
-                                CreateValue(value: "soda")] ){
+assistant.createEntity(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    values: [
+        CreateValue(value: "water"),
+        CreateValue(value: "orange juice"),
+        CreateValue(value: "soda")
+    ])
+{
     response, error in
 
     guard let entity = response?.result else {

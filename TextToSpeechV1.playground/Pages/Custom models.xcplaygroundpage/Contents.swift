@@ -41,7 +41,12 @@ textToSpeech.listVoiceModels() {
 
 let words = [ Word(word: "NCAA", translation: "N C double A"),
               Word(word: "iPhone", translation: "I phone")]
-textToSpeech.updateVoiceModel(customizationID: customizationID, name: "First Model Update", description: "First custom voice model update", words: words) {
+textToSpeech.updateVoiceModel(
+    customizationID: customizationID,
+    name: "First Model Update",
+    description: "First custom voice model update",
+    words: words)
+{
     _, error in
 
     if let error = error {

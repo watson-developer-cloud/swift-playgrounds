@@ -26,7 +26,12 @@ speechToText.listAudio(customizationID: modelID) {
 //:### Add an audio resource
 
 let audio1 = Data(contentsOf: Bundle.main.url(forResource: "audio1", withExtension: "wav")!)
-speechToText.addAudio(customizationID: modelID, audioName: "audio1", audioResource: audio1, contentType: "audio/wav") {
+speechToText.addAudio(
+    customizationID: modelID,
+    audioName: "audio1",
+    audioResource: audio1,
+    contentType: "audio/wav")
+{
     _, error in
 
     if let error = error {

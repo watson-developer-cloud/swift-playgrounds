@@ -12,7 +12,11 @@ var modelID: String!
 
 //:### Create a custom acoustic model
 
-speechToText.createAcousticModel(name: "First example acoustic model", baseModelName: "en-US_BroadbandModel", description: "First custom acoustic model example") {
+speechToText.createAcousticModel(
+    name: "First example acoustic model",
+    baseModelName: "en-US_BroadbandModel",
+    description: "First custom acoustic model example")
+{
     response, error in
 
     guard let model = response?.result else {

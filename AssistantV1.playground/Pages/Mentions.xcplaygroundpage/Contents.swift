@@ -12,10 +12,15 @@ let workspaceID = WatsonCredentials.AssistantV1Workspace
 
 // Setup
 
-assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
-                       values: [CreateValue(value: "water"),
-                                CreateValue(value: "orange juice"),
-                                CreateValue(value: "soda")] ){
+assistant.createEntity(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    values: [
+        CreateValue(value: "water"),
+        CreateValue(value: "orange juice"),
+        CreateValue(value: "soda")
+    ])
+{
     response, error in
 
     guard let entity = response?.result else {

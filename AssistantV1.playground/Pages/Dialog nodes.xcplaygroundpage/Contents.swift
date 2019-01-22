@@ -25,9 +25,15 @@ assistant.listDialogNodes(workspaceID: workspaceID) {
 
 //:### Create dialog node
 
-let output: DialogNodeOutput = DialogNodeOutput(generic: [DialogNodeOutputGeneric(responseType: "text", values: [DialogNodeOutputTextValuesElement(text: "Hi! How can I help you?")])])
+let output = DialogNodeOutput(generic: [DialogNodeOutputGeneric(responseType: "text", values: [DialogNodeOutputTextValuesElement(text: "Hi! How can I help you?")])])
 
-assistant.createDialogNode(workspaceID: workspaceID, dialogNode: "greeting",  conditions: "#hello", output: output,  title: "Greeting") {
+assistant.createDialogNode(
+    workspaceID: workspaceID,
+    dialogNode: "greeting",
+    conditions: "#hello",
+    output: output,
+    title: "Greeting")
+{
     response, error in
 
     guard let dialogNode = response?.result else {
@@ -53,9 +59,14 @@ assistant.getDialogNode(workspaceID: workspaceID, dialogNode: "greeting") {
 
 //:### Update dialog node
 
-let newOutput: DialogNodeOutput = DialogNodeOutput(generic: [DialogNodeOutputGeneric(responseType: "text", values: [DialogNodeOutputTextValuesElement(text: "Hello! What can I do for you?")])])
+let newOutput = DialogNodeOutput(generic: [DialogNodeOutputGeneric(responseType: "text", values: [DialogNodeOutputTextValuesElement(text: "Hello! What can I do for you?")])])
 
-assistant.updateDialogNode(workspaceID: workspaceID, dialogNode: "greeting", newDialogNode: "greeting", newOutput: newOutput) {
+assistant.updateDialogNode(
+    workspaceID: workspaceID,
+    dialogNode: "greeting",
+    newDialogNode: "greeting",
+    newOutput: newOutput)
+{
     response, error in
 
     guard let dialogNode = response?.result else {
