@@ -16,7 +16,7 @@ assistant.listLogs(workspaceID: workspaceID) {
     response, error in
 
     guard let logs = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -29,7 +29,7 @@ assistant.listAllLogs(filter: "language::en,request.context.metadata.deployment:
     response, error in
 
     guard let logs = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

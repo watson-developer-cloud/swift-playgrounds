@@ -18,7 +18,7 @@ personalityInsights.profile(profileContent: ProfileContent.content(content)) {
     response, error in
 
     guard let profile = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

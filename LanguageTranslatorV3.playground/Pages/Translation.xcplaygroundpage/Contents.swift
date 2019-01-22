@@ -15,7 +15,7 @@ languageTranslator.translate(text: ["Hello"], modelID: "en-es") {
     response, error in
 
     guard let translation = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

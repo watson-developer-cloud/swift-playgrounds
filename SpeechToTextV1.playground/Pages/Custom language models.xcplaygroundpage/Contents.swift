@@ -16,7 +16,7 @@ speechToText.createLanguageModel(name: "First example language model", baseModel
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -30,7 +30,7 @@ speechToText.listLanguageModels() {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -43,7 +43,7 @@ speechToText.getLanguageModel(customizationID: modelID) {
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

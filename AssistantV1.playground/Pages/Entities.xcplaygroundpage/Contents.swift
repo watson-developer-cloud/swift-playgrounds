@@ -16,7 +16,7 @@ assistant.listEntities(workspaceID: workspaceID) {
     response, error in
 
     guard let entities = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -32,7 +32,7 @@ assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -45,7 +45,7 @@ assistant.getEntity(workspaceID: workspaceID, entity: "beverage") {
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -58,7 +58,7 @@ assistant.updateEntity(workspaceID: workspaceID, entity: "beverage", newDescript
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

@@ -16,7 +16,7 @@ visualRecognition.getCoreMLModel(classifierID: classifierID) {
     response, error in
 
     guard let result = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

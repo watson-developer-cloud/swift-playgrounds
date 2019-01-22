@@ -17,7 +17,7 @@ speechToText.registerCallback(callbackURL: url, userSecret: "ThisIsMySecret") {
     response, error in
 
     guard let registerStatus = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -32,7 +32,7 @@ speechToText.createJob(audio: Data(contentsOf: audio), contentType: "audio/flac"
     response, error in
 
     guard let job = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -46,7 +46,7 @@ speechToText.checkJobs() {
     response, error in
 
     guard let jobs = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -59,7 +59,7 @@ speechToText.checkJob(id: jobId) {
     response, error in
 
     guard let job = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

@@ -16,7 +16,7 @@ naturalLanguageClassifier.listClassifiers() {
     response, error in
 
     guard let classifiers = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -32,7 +32,7 @@ naturalLanguageClassifier.createClassifier(metadata: metadata, trainingData: tra
     response, error in
 
     guard let classifier = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -46,7 +46,7 @@ naturalLanguageClassifier.getClassifier(classifierID: classifierID) {
     response, error in
 
     guard let classifier = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

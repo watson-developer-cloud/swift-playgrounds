@@ -19,7 +19,7 @@ assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 }
@@ -28,7 +28,7 @@ assistant.createIntent(workspaceID: workspaceID, intent: "place_order", examples
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 }
@@ -39,7 +39,7 @@ assistant.listMentions(workspaceID: workspaceID, entity: "beverage") {
     response, error in
 
     guard let mentions = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

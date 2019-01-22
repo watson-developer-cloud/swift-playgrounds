@@ -19,7 +19,7 @@ assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 }
@@ -30,7 +30,7 @@ assistant.listSynonyms(workspaceID: workspaceID, entity: "beverage", value: "sod
     response, error in
 
     guard let synonyms = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -43,7 +43,7 @@ assistant.createSynonym(workspaceID: workspaceID, entity: "beverage", value: "or
     response, error in
 
     guard let synonym = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -56,7 +56,7 @@ assistant.getSynonym(workspaceID: workspaceID, entity: "beverage", value: "orang
     response, error in
 
     guard let synonym = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -69,7 +69,7 @@ assistant.updateSynonym(workspaceID: workspaceID, entity: "beverage", value: "or
     response, error in
 
     guard let synonym = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

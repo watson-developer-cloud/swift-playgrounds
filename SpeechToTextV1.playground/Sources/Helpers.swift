@@ -24,7 +24,7 @@ public func getModelID() -> String! {
         response, error in
 
         guard let result = response?.result else {
-            assertionFailure(error?.localizedDescription ?? "unexpected error")
+            assertionFailure(error?.localizedDescription ?? "missing result")
             return
         }
 
@@ -34,7 +34,7 @@ public func getModelID() -> String! {
                 response, error in
 
                 guard let model = response?.result else {
-                    print(error?.localizedDescription ?? "unexpected error")
+                    print(error?.localizedDescription ?? "missing result")
                     return
                 }
 

@@ -16,7 +16,7 @@ assistant.listDialogNodes(workspaceID: workspaceID) {
     response, error in
 
     guard let dialogNodes = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -31,7 +31,7 @@ assistant.createDialogNode(workspaceID: workspaceID, dialogNode: "greeting",  co
     response, error in
 
     guard let dialogNode = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -44,7 +44,7 @@ assistant.getDialogNode(workspaceID: workspaceID, dialogNode: "greeting") {
     response, error in
 
     guard let dialogNode = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -59,7 +59,7 @@ assistant.updateDialogNode(workspaceID: workspaceID, dialogNode: "greeting", new
     response, error in
 
     guard let dialogNode = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

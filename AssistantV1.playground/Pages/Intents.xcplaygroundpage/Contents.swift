@@ -16,7 +16,7 @@ assistant.listIntents(workspaceID: workspaceID) {
     response, error in
 
     guard let intents = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -29,7 +29,7 @@ assistant.createIntent(workspaceID: workspaceID, intent: "hello", examples: [Cre
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -42,7 +42,7 @@ assistant.getIntent(workspaceID: workspaceID, intent: "hello") {
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -55,7 +55,7 @@ assistant.updateIntent(workspaceID: workspaceID, intent: "hello", newDescription
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

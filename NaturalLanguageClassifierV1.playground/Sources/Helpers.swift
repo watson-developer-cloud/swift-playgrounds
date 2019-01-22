@@ -29,7 +29,7 @@ public func getClassifierID() -> String? {
         response, error in
 
         guard let result = response?.result else {
-            assertionFailure(error?.localizedDescription ?? "unexpected error")
+            assertionFailure(error?.localizedDescription ?? "missing result")
             return
         }
 
@@ -42,7 +42,7 @@ public func getClassifierID() -> String? {
                 response, error in
 
                 guard let classifier = response?.result else {
-                    assertionFailure(error?.localizedDescription ?? "unexpected error")
+                    assertionFailure(error?.localizedDescription ?? "missing result")
                     return
                 }
 

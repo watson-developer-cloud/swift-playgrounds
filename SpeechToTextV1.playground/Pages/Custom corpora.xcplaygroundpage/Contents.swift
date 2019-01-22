@@ -16,7 +16,7 @@ speechToText.listCorpora(customizationID: modelID) {
     response, error in
 
     guard let corpora = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -43,7 +43,7 @@ speechToText.getCorpus(customizationID: modelID, corpusName: "corpus1") {
     response, error in
 
     guard let corpus = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

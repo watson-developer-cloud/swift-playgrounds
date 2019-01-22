@@ -16,7 +16,7 @@ speechToText.createAcousticModel(name: "First example acoustic model", baseModel
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -30,7 +30,7 @@ speechToText.listAcousticModels() {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -43,7 +43,7 @@ speechToText.getAcousticModel(customizationID: modelID) {
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

@@ -16,7 +16,7 @@ speechToText.listAudio(customizationID: modelID) {
     response, error in
 
     guard let resources = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
@@ -43,7 +43,7 @@ speechToText.getAudio(customizationID: modelID, audioName: "audio1") {
     response, error in
 
     guard let listing = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 

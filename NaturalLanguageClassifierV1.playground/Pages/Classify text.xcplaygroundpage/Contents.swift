@@ -16,7 +16,7 @@ naturalLanguageClassifier.classify(classifierID: classifierID, text: "How hot wi
     response, error in
 
     guard let translation = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "missing result")
         return
     }
 
