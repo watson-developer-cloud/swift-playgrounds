@@ -20,7 +20,7 @@ visualRecognition.getCoreMLModel(classifierID: classifierID) {
         return
     }
 
-    let modelFile = playgroundSharedDataDirectory.appendingPathComponent(classifierID+".mlmodel")
+    let modelFile = URL(fileURLWithPath: NSTemporaryDirectory() + "\(classifierID).mlmodel")
     do {
         try coreMLData.write(to: modelFile)
         print("ML model saved to \(modelFile.lastPathComponent)")

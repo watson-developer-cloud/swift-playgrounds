@@ -86,10 +86,10 @@ visualRecognition.updateClassifier(
 //:### Delete a classifier
 
 visualRecognition.deleteClassifier(classifierID: classifierID) {
-    response, error in
+    _, error in
 
-    guard let result = response?.result else {
-        print(error?.localizedDescription ?? "unknown error")
+    if let error = error {
+        print(error.localizedDescription)
         return
     }
 
