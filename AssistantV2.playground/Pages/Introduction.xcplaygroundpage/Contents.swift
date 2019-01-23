@@ -2,7 +2,7 @@
 
 import PlaygroundSupport
 
-//: This playground contains code examples for the Watson Assistant V1 service.
+//: This playground contains code examples for the Watson Assistant V2 service.
 
 // Enable support for asynchronous completion handlers
 PlaygroundPage.current.needsIndefiniteExecution = true
@@ -18,3 +18,22 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 //:```
 
 import AssistantV2
+
+//:## Authentication
+
+let version = "2018-11-08"
+let apiKey = WatsonCredentials.AssistantV2APIKey
+
+let assistant = Assistant(version: version, apiKey: apiKey)
+
+//:## Service URL
+
+// Set the URL for the service endpoint if needed
+if let serviceURL = WatsonCredentials.AssistantV2URL {
+    assistant.serviceURL = serviceURL
+}
+
+//:## Error handling
+
+// TODO: Fill this in
+
