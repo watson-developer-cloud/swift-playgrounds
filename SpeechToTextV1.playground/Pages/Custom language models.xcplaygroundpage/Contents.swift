@@ -8,15 +8,19 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var modelID: String!
+var modelID: String = ""
 
 //:### Create a custom language model
 
-speechToText.createLanguageModel(name: "First example language model", baseModelName: "en-US_BroadbandModel", description: "First custom language model example") {
+speechToText.createLanguageModel(
+    name: "First example language model",
+    baseModelName: "en-US_BroadbandModel",
+    description: "First custom language model example")
+{
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -30,7 +34,7 @@ speechToText.listLanguageModels() {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -43,7 +47,7 @@ speechToText.getLanguageModel(customizationID: modelID) {
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

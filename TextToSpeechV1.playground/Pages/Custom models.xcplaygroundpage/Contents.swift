@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import TextToSpeechV1
 
 let textToSpeech = setupTextToSpeechV1()
-var customizationID: String!
+var customizationID: String = ""
 
 //:### Create a custom model
 
@@ -16,7 +16,7 @@ textToSpeech.createVoiceModel(name: "First Model", language: "en-US", descriptio
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -30,7 +30,7 @@ textToSpeech.listVoiceModels() {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -39,9 +39,16 @@ textToSpeech.listVoiceModels() {
 
 //:### Update a custom model
 
-let words = [ Word(word: "NCAA", translation: "N C double A"),
-              Word(word: "iPhone", translation: "I phone")]
-textToSpeech.updateVoiceModel(customizationID: customizationID, name: "First Model Update", description: "First custom voice model update", words: words) {
+let words = [
+    Word(word: "NCAA", translation: "N C double A"),
+    Word(word: "iPhone", translation: "I phone")
+]
+textToSpeech.updateVoiceModel(
+    customizationID: customizationID,
+    name: "First Model Update",
+    description: "First custom voice model update",
+    words: words)
+{
     _, error in
 
     if let error = error {
@@ -58,7 +65,7 @@ textToSpeech.getVoiceModel(customizationID: customizationID) {
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

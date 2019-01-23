@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import NaturalLanguageClassifierV1
 
 let naturalLanguageClassifier = setupNaturalLanguageClassifierV1()
-var classifierID: String!
+var classifierID: String = ""
 
 //:### List classifiers
 
@@ -16,7 +16,7 @@ naturalLanguageClassifier.listClassifiers() {
     response, error in
 
     guard let classifiers = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -32,7 +32,7 @@ naturalLanguageClassifier.createClassifier(metadata: metadata, trainingData: tra
     response, error in
 
     guard let classifier = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -46,7 +46,7 @@ naturalLanguageClassifier.getClassifier(classifierID: classifierID) {
     response, error in
 
     guard let classifier = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -56,7 +56,7 @@ naturalLanguageClassifier.getClassifier(classifierID: classifierID) {
 //:### Delete classifier
 
 naturalLanguageClassifier.deleteClassifier(classifierID: classifierID) {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

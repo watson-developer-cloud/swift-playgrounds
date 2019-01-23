@@ -15,7 +15,7 @@ assistant.listWorkspaces() {
     response, error in
 
     guard let workspaces = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -24,13 +24,13 @@ assistant.listWorkspaces() {
 
 //:### Create workspace
 
-var workspaceID = "{workspace_id}"
+var workspaceID = ""
 
 assistant.createWorkspace(name: "API test", description: "Example workspace created via API") {
     response, error in
 
     guard let workspace = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -44,7 +44,7 @@ assistant.getWorkspace(workspaceID: workspaceID) {
     response, error in
 
     guard let workspace = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -57,7 +57,7 @@ assistant.updateWorkspace(workspaceID: workspaceID, name: "Updated workspace", d
     response, error in
 
     guard let workspace = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -67,7 +67,7 @@ assistant.updateWorkspace(workspaceID: workspaceID, name: "Updated workspace", d
 //:### Delete workspace
 
 assistant.deleteWorkspace(workspaceID: workspaceID) {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

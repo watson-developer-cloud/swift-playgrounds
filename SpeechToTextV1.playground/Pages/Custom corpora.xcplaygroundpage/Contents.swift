@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var modelID: String! = getModelID()
+var modelID = getModelID()
 
 //:### List corpora
 
@@ -16,7 +16,7 @@ speechToText.listCorpora(customizationID: modelID) {
     response, error in
 
     guard let corpora = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -43,7 +43,7 @@ speechToText.getCorpus(customizationID: modelID, corpusName: "corpus1") {
     response, error in
 
     guard let corpus = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

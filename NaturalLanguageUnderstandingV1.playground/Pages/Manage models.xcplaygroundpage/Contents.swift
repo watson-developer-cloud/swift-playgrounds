@@ -15,7 +15,7 @@ naturalLanguageUnderstanding.listModels() {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -25,7 +25,7 @@ naturalLanguageUnderstanding.listModels() {
 //:### Delete model
 
 naturalLanguageUnderstanding.deleteModel(modelID: "model-id") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

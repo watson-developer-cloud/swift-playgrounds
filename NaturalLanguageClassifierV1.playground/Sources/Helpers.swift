@@ -16,10 +16,10 @@ public func setupNaturalLanguageClassifierV1() -> NaturalLanguageClassifier {
 }
 
 // Return a classifierID
-public func getClassifierID() -> String? {
+public func getClassifierID() -> String {
 
-    if WatsonCredentials.NaturalLanguageClassifierV1ClassifierID != nil {
-        return WatsonCredentials.NaturalLanguageClassifierV1ClassifierID
+    if let id = WatsonCredentials.NaturalLanguageClassifierV1ClassifierID {
+        return id
     }
 
     let naturalLanguageClassifier = setupNaturalLanguageClassifierV1()
@@ -29,7 +29,7 @@ public func getClassifierID() -> String? {
         response, error in
 
         guard let result = response?.result else {
-            assertionFailure(error?.localizedDescription ?? "unexpected error")
+            assertionFailure(error?.localizedDescription ?? "unknown error")
             return
         }
 
@@ -42,7 +42,7 @@ public func getClassifierID() -> String? {
                 response, error in
 
                 guard let classifier = response?.result else {
-                    assertionFailure(error?.localizedDescription ?? "unexpected error")
+                    assertionFailure(error?.localizedDescription ?? "unknown error")
                     return
                 }
 
@@ -52,7 +52,7 @@ public func getClassifierID() -> String? {
     }
 
     while classifierID == nil { sleep(1) }
-    return classifierID
+    return classifierID!
 }
 
 public var encoder: JSONEncoder {

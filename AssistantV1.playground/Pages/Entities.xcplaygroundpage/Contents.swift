@@ -16,7 +16,7 @@ assistant.listEntities(workspaceID: workspaceID) {
     response, error in
 
     guard let entities = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -25,14 +25,19 @@ assistant.listEntities(workspaceID: workspaceID) {
 
 //:### Create entity
 
-assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
-                       values: [CreateValue(value: "water"),
-                                CreateValue(value: "orange juice"),
-                                CreateValue(value: "soda")] ){
+assistant.createEntity(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    values: [
+        CreateValue(value: "water"),
+        CreateValue(value: "orange juice"),
+        CreateValue(value: "soda")
+    ])
+{
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -45,7 +50,7 @@ assistant.getEntity(workspaceID: workspaceID, entity: "beverage") {
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -58,7 +63,7 @@ assistant.updateEntity(workspaceID: workspaceID, entity: "beverage", newDescript
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -68,7 +73,7 @@ assistant.updateEntity(workspaceID: workspaceID, entity: "beverage", newDescript
 //:### Delete entity
 
 assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

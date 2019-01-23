@@ -13,7 +13,7 @@ let workspaceID = WatsonCredentials.AssistantV1Workspace
 //:### Delete labeled data
 
 assistant.deleteUserData(customerID: "{id}") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

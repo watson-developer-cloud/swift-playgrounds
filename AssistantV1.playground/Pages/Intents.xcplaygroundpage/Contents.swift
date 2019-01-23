@@ -16,7 +16,7 @@ assistant.listIntents(workspaceID: workspaceID) {
     response, error in
 
     guard let intents = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -25,11 +25,18 @@ assistant.listIntents(workspaceID: workspaceID) {
 
 //:### Create intent
 
-assistant.createIntent(workspaceID: workspaceID, intent: "hello", examples: [CreateExample(text: "Good morning"), CreateExample(text: "Hi there")]){
+assistant.createIntent(
+    workspaceID: workspaceID,
+    intent: "hello",
+    examples: [
+        CreateExample(text: "Good morning"),
+        CreateExample(text: "Hi there")
+    ])
+{
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -42,7 +49,7 @@ assistant.getIntent(workspaceID: workspaceID, intent: "hello") {
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -51,11 +58,16 @@ assistant.getIntent(workspaceID: workspaceID, intent: "hello") {
 
 //:### Update intent
 
-assistant.updateIntent(workspaceID: workspaceID, intent: "hello", newDescription: "Updated intent", newExamples: [CreateExample(text: "Good afternoon")]){
+assistant.updateIntent(
+    workspaceID: workspaceID,
+    intent: "hello",
+    newDescription: "Updated intent",
+    newExamples: [CreateExample(text: "Good afternoon")])
+{
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -65,7 +77,7 @@ assistant.updateIntent(workspaceID: workspaceID, intent: "hello", newDescription
 //:### Delete intent
 
 assistant.deleteIntent(workspaceID: workspaceID, intent: "hello") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

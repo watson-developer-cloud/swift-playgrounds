@@ -8,19 +8,19 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import VisualRecognitionV3
 
 let visualRecognition = setupVisualRecognitionV3()
-var classifierID: String! = nil
+var classifierID = ""
 
 //:### Retrieve a list of classifiers
 
 visualRecognition.listClassifiers(verbose: true) {
     response, error in
 
-    guard let result = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+    guard let classifiers = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
-    print(result)
+    print(classifiers)
 }
 
 //:### Create a classifier
@@ -30,35 +30,37 @@ let goldenRetriever = Bundle.main.url(forResource: "golden-retriever", withExten
 let husky = Bundle.main.url(forResource: "husky", withExtension: "zip")!
 let cats = Bundle.main.url(forResource: "cats", withExtension: "zip")!
 
-visualRecognition.createClassifier(name: "dogs",
-                                   positiveExamples: ["beagle": beagle,
-                                                      "goldenretriever": goldenRetriever,
-                                                      "husky": husky],
-                                   negativeExamples: cats) {
+visualRecognition.createClassifier(
+    name: "dogs",
+    positiveExamples: [
+        "beagle": beagle,
+        "goldenretriever": goldenRetriever,
+        "husky": husky
+    ],
+    negativeExamples: cats)
+{
     response, error in
 
-    guard let result = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+    guard let classifier = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
-    classifierID = result.classifierID
-    print(result)
+    classifierID = classifier.classifierID
+    print(classifier)
 }
-
-classifierID = "dogs_501582321"
 
 //:### Retrieve classifier details
 
 visualRecognition.getClassifier(classifierID: classifierID) {
     response, error in
 
-    guard let result = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+    guard let classifier = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
-    print(result)
+    print(classifier)
 }
 
 //:### Update a classifier
@@ -66,26 +68,28 @@ visualRecognition.getClassifier(classifierID: classifierID) {
 let dalmatian = Bundle.main.url(forResource: "dalmatian", withExtension: "zip")!
 let moreCats = Bundle.main.url(forResource: "more-cats", withExtension: "zip")!
 
-visualRecognition.updateClassifier(classifierID: classifierID,
-                                   positiveExamples: ["dalmatian": dalmatian],
-                                   negativeExamples: moreCats) {
+visualRecognition.updateClassifier(
+    classifierID: classifierID,
+    positiveExamples: ["dalmatian": dalmatian],
+    negativeExamples: moreCats)
+{
     response, error in
 
-    guard let result = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+    guard let classifier = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
-    print(result)
+    print(classifier)
 }
 
 //:### Delete a classifier
 
 visualRecognition.deleteClassifier(classifierID: classifierID) {
-    response, error in
+    _, error in
 
-    guard let result = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+    if let error = error {
+        print(error.localizedDescription)
         return
     }
 

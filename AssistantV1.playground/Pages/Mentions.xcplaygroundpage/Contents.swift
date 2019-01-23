@@ -12,14 +12,19 @@ let workspaceID = WatsonCredentials.AssistantV1Workspace
 
 // Setup
 
-assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
-                       values: [CreateValue(value: "water"),
-                                CreateValue(value: "orange juice"),
-                                CreateValue(value: "soda")] ){
+assistant.createEntity(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    values: [
+        CreateValue(value: "water"),
+        CreateValue(value: "orange juice"),
+        CreateValue(value: "soda")
+    ])
+{
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 }
@@ -28,7 +33,7 @@ assistant.createIntent(workspaceID: workspaceID, intent: "place_order", examples
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 }
@@ -39,7 +44,7 @@ assistant.listMentions(workspaceID: workspaceID, entity: "beverage") {
     response, error in
 
     guard let mentions = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -49,7 +54,7 @@ assistant.listMentions(workspaceID: workspaceID, entity: "beverage") {
 // Cleanup
 
 assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)
@@ -58,7 +63,7 @@ assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
 }
 
 assistant.deleteIntent(workspaceID: workspaceID, intent: "place_order") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

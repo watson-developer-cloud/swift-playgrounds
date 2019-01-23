@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var modelID: String! = getModelID()
+var modelID = getModelID()
 
 //:### List custom words
 
@@ -16,7 +16,7 @@ speechToText.listWords(customizationID: modelID, sort: "+alphabetical") {
     response, error in
 
     guard let words = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -25,8 +25,10 @@ speechToText.listWords(customizationID: modelID, sort: "+alphabetical") {
 
 //:### Add custom words
 
-let words = [CustomWord(word: "HHonors", soundsLike: ["hilton honors", "H. honors"], displayAs: "HHonors"),
-             CustomWord(word: "IEEE", soundsLike: ["I. triple E."])]
+let words = [
+    CustomWord(word: "HHonors", soundsLike: ["hilton honors", "H. honors"], displayAs: "HHonors"),
+    CustomWord(word: "IEEE", soundsLike: ["I. triple E."])
+]
 speechToText.addWords(customizationID: modelID, words: words) {
     _, error in
 
@@ -40,7 +42,12 @@ speechToText.addWords(customizationID: modelID, words: words) {
 
 //:### Add custom word
 
-speechToText.addWord(customizationID: modelID, wordName: "NCAA", soundsLike: ["N. C. A. A.", "N. C. double A."], displayAs: "NCAA") {
+speechToText.addWord(
+    customizationID: modelID,
+    wordName: "NCAA",
+    soundsLike: ["N. C. A. A.", "N. C. double A."],
+    displayAs: "NCAA")
+{
     _, error in
 
     if let error = error {
@@ -57,7 +64,7 @@ speechToText.getWord(customizationID: modelID, wordName: "NCAA") {
     response, error in
 
     guard let word = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

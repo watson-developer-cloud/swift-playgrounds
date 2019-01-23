@@ -8,15 +8,19 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var modelID: String!
+var modelID: String = ""
 
 //:### Create a custom acoustic model
 
-speechToText.createAcousticModel(name: "First example acoustic model", baseModelName: "en-US_BroadbandModel", description: "First custom acoustic model example") {
+speechToText.createAcousticModel(
+    name: "First example acoustic model",
+    baseModelName: "en-US_BroadbandModel",
+    description: "First custom acoustic model example")
+{
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -26,11 +30,11 @@ speechToText.createAcousticModel(name: "First example acoustic model", baseModel
 
 //:### List custom acoustic models
 
-speechToText.listAcousticModels() {
+speechToText.listAcousticModels(language: "en-US") {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -43,7 +47,7 @@ speechToText.getAcousticModel(customizationID: modelID) {
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

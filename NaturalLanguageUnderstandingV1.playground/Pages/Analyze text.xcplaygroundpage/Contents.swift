@@ -21,7 +21,7 @@ naturalLanguageUnderstanding.analyze(features: features, text: text) {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -35,7 +35,7 @@ naturalLanguageUnderstanding.analyze(features: categories, url: "www.ibm.com") {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -49,7 +49,7 @@ naturalLanguageUnderstanding.analyze(features: concepts, url: "www.ibm.com") {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -68,7 +68,7 @@ naturalLanguageUnderstanding.analyze(features: emotion, html: html) {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -82,7 +82,7 @@ naturalLanguageUnderstanding.analyze(features: entities, url: "www.cnn.com") {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -96,7 +96,7 @@ naturalLanguageUnderstanding.analyze(features: keywords, url: "www.ibm.com") {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -110,7 +110,7 @@ naturalLanguageUnderstanding.analyze(features: metadata, url: "www.ibm.com") {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -126,7 +126,7 @@ naturalLanguageUnderstanding.analyze(features: relations, text: text2) {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -135,13 +135,14 @@ naturalLanguageUnderstanding.analyze(features: relations, text: text2) {
 
 //:### Semantic Roles
 
-let text3 = "IBM has one of the largest in the world"
+let text3 = "IBM has one of the largest" +
+            " workforces in the world"
 let semanticRoles = Features(semanticRoles: SemanticRolesOptions())
 naturalLanguageUnderstanding.analyze(features: semanticRoles, text: text3) {
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -155,7 +156,7 @@ naturalLanguageUnderstanding.analyze(features: sentiment, url: "www.wsj.com/news
     response, error in
 
     guard let analysis = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

@@ -12,14 +12,19 @@ let workspaceID = WatsonCredentials.AssistantV1Workspace
 
 // Setup
 
-assistant.createEntity(workspaceID: workspaceID, entity: "beverage",
-                       values: [CreateValue(value: "water"),
-                                CreateValue(value: "orange juice"),
-                                CreateValue(value: "soda", synonyms: ["pop", "soft drink"])] ){
+assistant.createEntity(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    values: [
+        CreateValue(value: "water"),
+        CreateValue(value: "orange juice"),
+        CreateValue(value: "soda", synonyms: ["pop", "soft drink"])
+    ])
+{
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 }
@@ -30,7 +35,7 @@ assistant.listSynonyms(workspaceID: workspaceID, entity: "beverage", value: "sod
     response, error in
 
     guard let synonyms = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -39,11 +44,16 @@ assistant.listSynonyms(workspaceID: workspaceID, entity: "beverage", value: "sod
 
 //:### Add entity value synonym
 
-assistant.createSynonym(workspaceID: workspaceID, entity: "beverage", value: "orange juice", synonym: "OJ") {
+assistant.createSynonym(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    value: "orange juice",
+    synonym: "OJ")
+{
     response, error in
 
     guard let synonym = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -52,11 +62,16 @@ assistant.createSynonym(workspaceID: workspaceID, entity: "beverage", value: "or
 
 //:### Get entity value synonym
 
-assistant.getSynonym(workspaceID: workspaceID, entity: "beverage", value: "orange juice", synonym: "OJ") {
+assistant.getSynonym(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    value: "orange juice",
+    synonym: "OJ")
+{
     response, error in
 
     guard let synonym = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -65,11 +80,17 @@ assistant.getSynonym(workspaceID: workspaceID, entity: "beverage", value: "orang
 
 //:### Update entity value synonym
 
-assistant.updateSynonym(workspaceID: workspaceID, entity: "beverage", value: "orange juice", synonym: "OJ", newSynonym: "O.J.") {
+assistant.updateSynonym(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    value: "orange juice",
+    synonym: "OJ",
+    newSynonym: "O.J.")
+{
     response, error in
 
     guard let synonym = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -78,8 +99,13 @@ assistant.updateSynonym(workspaceID: workspaceID, entity: "beverage", value: "or
 
 //:### Delete entity value synonym
 
-assistant.deleteSynonym(workspaceID: workspaceID, entity: "beverage", value: "orange juice", synonym: "O.J.") {
-    response, error in
+assistant.deleteSynonym(
+    workspaceID: workspaceID,
+    entity: "beverage",
+    value: "orange juice",
+    synonym: "O.J.")
+{
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)
@@ -92,7 +118,7 @@ assistant.deleteSynonym(workspaceID: workspaceID, entity: "beverage", value: "or
 // Cleanup
 
 assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

@@ -8,12 +8,14 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import TextToSpeechV1
 
 let textToSpeech = setupTextToSpeechV1()
-var customizationID: String! = getVoiceModelID()
+var customizationID = getVoiceModelID()
 
 //:### Add custom words
 
-let words = [Word(word: "EEE", translation: "<phoneme alphabet=\"ibm\" ph=\"tr1Ipxl.1i\"></phoneme>"),
-             Word(word: "IEEE", translation: "<phoneme alphabet=\"ibm\" ph=\"1Y.tr1Ipxl.1i\"></phoneme>")]
+let words = [
+    Word(word: "EEE", translation: "<phoneme alphabet=\"ibm\" ph=\"tr1Ipxl.1i\"></phoneme>"),
+    Word(word: "IEEE", translation: "<phoneme alphabet=\"ibm\" ph=\"1Y.tr1Ipxl.1i\"></phoneme>")
+]
 textToSpeech.addWords(customizationID: customizationID, words: words) {
     _, error in
 
@@ -31,7 +33,7 @@ textToSpeech.listWords(customizationID: customizationID) {
     response, error in
 
     guard let words = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -56,12 +58,12 @@ textToSpeech.addWord(customizationID: customizationID, word: "ACLs", translation
 textToSpeech.getWord(customizationID: customizationID, word: "ACLs") {
     response, error in
 
-    guard let translation = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+    guard let word = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
-    print(translation)
+    print(word)
 }
 
 //:### Delete a custom word

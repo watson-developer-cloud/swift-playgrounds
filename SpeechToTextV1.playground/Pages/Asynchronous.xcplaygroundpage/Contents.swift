@@ -8,7 +8,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var jobId: String!
+var jobId: String = ""
 
 //:### Register a callback
 
@@ -17,7 +17,7 @@ speechToText.registerCallback(callbackURL: url, userSecret: "ThisIsMySecret") {
     response, error in
 
     guard let registerStatus = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -28,11 +28,17 @@ speechToText.registerCallback(callbackURL: url, userSecret: "ThisIsMySecret") {
 
 let audio = Bundle.main.url(forResource: "audio-file", withExtension: "flac")!
 
-speechToText.createJob(audio: Data(contentsOf: audio), contentType: "audio/flac", callbackURL: url, userToken: "job25", timestamps: true) {
+speechToText.createJob(
+    audio: Data(contentsOf: audio),
+    contentType: "audio/flac",
+    callbackURL: url,
+    userToken: "job25",
+    timestamps: true)
+{
     response, error in
 
     guard let job = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -46,7 +52,7 @@ speechToText.checkJobs() {
     response, error in
 
     guard let jobs = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -59,7 +65,7 @@ speechToText.checkJob(id: jobId) {
     response, error in
 
     guard let job = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

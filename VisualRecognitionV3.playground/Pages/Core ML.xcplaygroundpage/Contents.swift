@@ -15,14 +15,14 @@ var classifierID = WatsonCredentials.VisualRecognitionV3ClassifierID
 visualRecognition.getCoreMLModel(classifierID: classifierID) {
     response, error in
 
-    guard let result = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+    guard let coreMLData = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
-    let modelFile = playgroundSharedDataDirectory.appendingPathComponent(classifierID+".mlmodel")
+    let modelFile = URL(fileURLWithPath: NSTemporaryDirectory() + "\(classifierID).mlmodel")
     do {
-        try result.write(to: modelFile)
+        try coreMLData.write(to: modelFile)
         print("ML model saved to \(modelFile.lastPathComponent)")
     } catch {
         print("Error writing: \(error)")

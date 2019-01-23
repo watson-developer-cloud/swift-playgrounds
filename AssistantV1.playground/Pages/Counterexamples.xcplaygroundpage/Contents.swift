@@ -16,7 +16,7 @@ assistant.listCounterexamples(workspaceID: workspaceID) {
     response, error in
 
     guard let counterexamples = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -29,7 +29,7 @@ assistant.createCounterexample(workspaceID: workspaceID, text: "Make me a sandwi
     response, error in
 
     guard let counterexample = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -42,7 +42,7 @@ assistant.getCounterexample(workspaceID: workspaceID, text: "Make me a sandwich"
     response, error in
 
     guard let counterexample = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -55,7 +55,7 @@ assistant.updateCounterexample(workspaceID: workspaceID, text: "Make me a sandwi
     response, error in
 
     guard let counterexample = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -65,7 +65,7 @@ assistant.updateCounterexample(workspaceID: workspaceID, text: "Make me a sandwi
 //:### Delete counterexample
 
 assistant.deleteCounterexample(workspaceID: workspaceID, text: "Make me a cheeseburger") {
-    response, error in
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

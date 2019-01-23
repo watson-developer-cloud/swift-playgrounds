@@ -15,7 +15,7 @@ textToSpeech.listVoices() {
     response, error in
 
     guard let voices = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -28,7 +28,7 @@ textToSpeech.getVoice(voice: "en-US_AllisonVoice") {
     response, error in
 
     guard let voice = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

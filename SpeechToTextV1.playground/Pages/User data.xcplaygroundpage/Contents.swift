@@ -11,8 +11,8 @@ let speechToText = setupSpeechToTextV1()
 
 //:### Delete labeled data
 
-speechToText.deleteUserData(customerID: "{id}") {
-    response, error in
+speechToText.deleteUserData(customerID: "{my_customer_ID}") {
+    _, error in
 
     if let error = error {
         print(error.localizedDescription)

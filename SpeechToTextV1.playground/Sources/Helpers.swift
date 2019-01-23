@@ -15,7 +15,7 @@ public func setupSpeechToTextV1() -> SpeechToText {
 }
 
 // Return a modelID
-public func getModelID() -> String! {
+public func getModelID() -> String {
 
     let speechToText = setupSpeechToTextV1()
 
@@ -24,7 +24,7 @@ public func getModelID() -> String! {
         response, error in
 
         guard let result = response?.result else {
-            assertionFailure(error?.localizedDescription ?? "unexpected error")
+            assertionFailure(error?.localizedDescription ?? "unknown error")
             return
         }
 
@@ -34,7 +34,7 @@ public func getModelID() -> String! {
                 response, error in
 
                 guard let model = response?.result else {
-                    print(error?.localizedDescription ?? "unexpected error")
+                    print(error?.localizedDescription ?? "unknown error")
                     return
                 }
 
@@ -44,7 +44,7 @@ public func getModelID() -> String! {
     }
 
     while modelID == nil { sleep(1) }
-    return modelID
+    return modelID!
 }
 
 public var encoder: JSONEncoder {

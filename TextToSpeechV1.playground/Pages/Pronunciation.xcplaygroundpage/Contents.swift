@@ -15,7 +15,7 @@ textToSpeech.getPronunciation(text: "IEEE", voice: "en-US_AllisonVoice", format:
     response, error in
 
     guard let pronunciation = response?.result else {
-        print(error?.localizedDescription ?? "unexpected error")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
