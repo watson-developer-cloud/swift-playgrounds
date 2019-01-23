@@ -19,7 +19,7 @@ visualRecognition.classify(imagesFile: fruitbowl, threshold: 0.6, owners: ["me"]
     response, error in
 
     guard let result = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -32,7 +32,7 @@ visualRecognition.classify(imagesFile: fruitbowl, classifierIDs: ["food"]) {
     response, error in
 
     guard let result = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

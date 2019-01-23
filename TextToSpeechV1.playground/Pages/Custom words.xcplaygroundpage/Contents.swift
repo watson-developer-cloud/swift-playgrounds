@@ -33,7 +33,7 @@ textToSpeech.listWords(customizationID: customizationID) {
     response, error in
 
     guard let words = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -59,7 +59,7 @@ textToSpeech.getWord(customizationID: customizationID, word: "ACLs") {
     response, error in
 
     guard let word = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

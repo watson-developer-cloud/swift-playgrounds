@@ -15,7 +15,7 @@ languageTranslator.listIdentifiableLanguages() {
     response, error in
 
     guard let languagesList = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -28,7 +28,7 @@ languageTranslator.identify(text: "Language translator translates text from one 
     response, error in
 
     guard let languages = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

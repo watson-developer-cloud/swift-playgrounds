@@ -24,7 +24,7 @@ public func getVoiceModelID() -> String {
         response, error in
 
         guard let result = response?.result else {
-            assertionFailure(error?.localizedDescription ?? "missing result")
+            assertionFailure(error?.localizedDescription ?? "unknown error")
             return
         }
 
@@ -34,7 +34,7 @@ public func getVoiceModelID() -> String {
                 response, error in
 
                 guard let model = response?.result else {
-                    print(error?.localizedDescription ?? "missing result")
+                    print(error?.localizedDescription ?? "unknown error")
                     return
                 }
 

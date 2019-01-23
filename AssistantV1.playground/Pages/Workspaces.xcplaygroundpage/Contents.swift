@@ -15,7 +15,7 @@ assistant.listWorkspaces() {
     response, error in
 
     guard let workspaces = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -30,7 +30,7 @@ assistant.createWorkspace(name: "API test", description: "Example workspace crea
     response, error in
 
     guard let workspace = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -44,7 +44,7 @@ assistant.getWorkspace(workspaceID: workspaceID) {
     response, error in
 
     guard let workspace = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -57,7 +57,7 @@ assistant.updateWorkspace(workspaceID: workspaceID, name: "Updated workspace", d
     response, error in
 
     guard let workspace = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

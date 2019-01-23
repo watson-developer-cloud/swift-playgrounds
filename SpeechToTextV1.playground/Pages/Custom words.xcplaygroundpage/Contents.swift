@@ -16,7 +16,7 @@ speechToText.listWords(customizationID: modelID, sort: "+alphabetical") {
     response, error in
 
     guard let words = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -64,7 +64,7 @@ speechToText.getWord(customizationID: modelID, wordName: "NCAA") {
     response, error in
 
     guard let word = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

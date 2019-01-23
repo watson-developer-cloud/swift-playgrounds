@@ -17,7 +17,7 @@ assistant.message(workspaceID: workspaceID, input: input) {
     response, error in
 
     guard let message = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

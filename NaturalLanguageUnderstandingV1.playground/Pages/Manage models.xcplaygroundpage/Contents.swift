@@ -15,7 +15,7 @@ naturalLanguageUnderstanding.listModels() {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

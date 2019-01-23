@@ -16,7 +16,7 @@ textToSpeech.createVoiceModel(name: "First Model", language: "en-US", descriptio
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -30,7 +30,7 @@ textToSpeech.listVoiceModels() {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -65,7 +65,7 @@ textToSpeech.getVoiceModel(customizationID: customizationID) {
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

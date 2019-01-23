@@ -22,7 +22,7 @@ speechToText.recognize(audio: audio, settings: settings) {
     response, error in
 
     guard let results = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

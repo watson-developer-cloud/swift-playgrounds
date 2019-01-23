@@ -24,7 +24,7 @@ assistant.createIntent(
     response, error in
 
     guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 }
@@ -35,7 +35,7 @@ assistant.listExamples(workspaceID: workspaceID, intent: intent) {
     response, error in
 
     guard let examples = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -48,7 +48,7 @@ assistant.createExample(workspaceID: workspaceID, intent: intent, text: "Howdy!"
     response, error in
 
     guard let example = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -61,7 +61,7 @@ assistant.getExample(workspaceID: workspaceID, intent: intent, text: "Good after
     response, error in
 
     guard let example = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -74,7 +74,7 @@ assistant.updateExample(workspaceID: workspaceID, intent: intent, text: "Hi ther
     response, error in
 
     guard let example = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

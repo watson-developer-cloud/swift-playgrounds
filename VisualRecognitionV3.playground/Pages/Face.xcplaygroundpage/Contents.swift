@@ -19,7 +19,7 @@ visualRecognition.detectFaces(imagesFile: ginni) {
     response, error in
 
     guard let result = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

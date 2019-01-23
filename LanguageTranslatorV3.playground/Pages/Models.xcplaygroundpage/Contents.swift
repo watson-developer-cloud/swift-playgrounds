@@ -16,7 +16,7 @@ languageTranslator.listModels() {
     response, error in
 
     guard let models = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -31,7 +31,7 @@ languageTranslator.createModel(baseModelID: "en-es", name: "custom-en-es", force
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -45,7 +45,7 @@ languageTranslator.getModel(modelID: modelID) {
     response, error in
 
     guard let model = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

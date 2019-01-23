@@ -24,7 +24,7 @@ assistant.createEntity(
     response, error in
 
     guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 }
@@ -35,7 +35,7 @@ assistant.listValues(workspaceID: workspaceID, entity: "beverage") {
     response, error in
 
     guard let values = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -48,7 +48,7 @@ assistant.createValue(workspaceID: workspaceID, entity: "beverage", value: "beer
     response, error in
 
     guard let value = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -61,7 +61,7 @@ assistant.getValue(workspaceID: workspaceID, entity: "beverage", value: "orange 
     response, error in
 
     guard let value = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -79,7 +79,7 @@ assistant.updateValue(
     response, error in
 
     guard let value = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

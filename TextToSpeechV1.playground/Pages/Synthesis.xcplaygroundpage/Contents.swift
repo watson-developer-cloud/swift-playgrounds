@@ -15,7 +15,7 @@ textToSpeech.synthesize(text: "Hello World", accept: "audio/wav", voice: "en-US_
     response, error in
 
     guard let audio = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 

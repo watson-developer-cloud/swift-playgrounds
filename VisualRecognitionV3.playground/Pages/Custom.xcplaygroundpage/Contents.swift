@@ -16,7 +16,7 @@ visualRecognition.listClassifiers(verbose: true) {
     response, error in
 
     guard let classifiers = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -42,7 +42,7 @@ visualRecognition.createClassifier(
     response, error in
 
     guard let classifier = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -56,7 +56,7 @@ visualRecognition.getClassifier(classifierID: classifierID) {
     response, error in
 
     guard let classifier = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -76,7 +76,7 @@ visualRecognition.updateClassifier(
     response, error in
 
     guard let classifier = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
@@ -89,7 +89,7 @@ visualRecognition.deleteClassifier(classifierID: classifierID) {
     response, error in
 
     guard let result = response?.result else {
-        print(error?.localizedDescription ?? "missing result")
+        print(error?.localizedDescription ?? "unknown error")
         return
     }
 
