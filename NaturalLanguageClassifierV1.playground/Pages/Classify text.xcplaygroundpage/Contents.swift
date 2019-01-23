@@ -15,10 +15,23 @@ let classifierID = getClassifierID()
 naturalLanguageClassifier.classify(classifierID: classifierID, text: "How hot will it be today?") {
     response, error in
 
-    guard let translation = response?.result else {
+    guard let classification = response?.result else {
         print(error?.localizedDescription ?? "missing result")
         return
     }
 
-    print(translation)
+    print(classification)
+}
+
+//:### Classify multiple phrases
+
+naturalLanguageClassifier.classify(classifierID: String, collection: [ClassifyInput]) {
+    response, error in
+
+    guard let classifications = response?.result else {
+        print(error?.localizedDescription ?? "missing result")
+        return
+    }
+
+    print(classifications)
 }
