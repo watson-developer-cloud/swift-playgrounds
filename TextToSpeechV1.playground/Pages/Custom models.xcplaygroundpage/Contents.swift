@@ -39,8 +39,10 @@ textToSpeech.listVoiceModels() {
 
 //:### Update a custom model
 
-let words = [ Word(word: "NCAA", translation: "N C double A"),
-              Word(word: "iPhone", translation: "I phone")]
+let words = [
+    Word(word: "NCAA", translation: "N C double A"),
+    Word(word: "iPhone", translation: "I phone")
+]
 textToSpeech.updateVoiceModel(
     customizationID: customizationID,
     name: "First Model Update",

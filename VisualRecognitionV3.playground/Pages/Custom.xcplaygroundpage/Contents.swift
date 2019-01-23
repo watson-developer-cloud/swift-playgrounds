@@ -15,12 +15,12 @@ var classifierID = ""
 visualRecognition.listClassifiers(verbose: true) {
     response, error in
 
-    guard let result = response?.result else {
+    guard let classifiers = response?.result else {
         print(error?.localizedDescription ?? "missing result")
         return
     }
 
-    print(result)
+    print(classifiers)
 }
 
 //:### Create a classifier
@@ -41,28 +41,26 @@ visualRecognition.createClassifier(
 {
     response, error in
 
-    guard let result = response?.result else {
+    guard let classifier = response?.result else {
         print(error?.localizedDescription ?? "missing result")
         return
     }
 
-    classifierID = result.classifierID
-    print(result)
+    classifierID = classifier.classifierID
+    print(classifier)
 }
-
-classifierID = "dogs_501582321"
 
 //:### Retrieve classifier details
 
 visualRecognition.getClassifier(classifierID: classifierID) {
     response, error in
 
-    guard let result = response?.result else {
+    guard let classifier = response?.result else {
         print(error?.localizedDescription ?? "missing result")
         return
     }
 
-    print(result)
+    print(classifier)
 }
 
 //:### Update a classifier
@@ -77,12 +75,12 @@ visualRecognition.updateClassifier(
 {
     response, error in
 
-    guard let result = response?.result else {
+    guard let classifier = response?.result else {
         print(error?.localizedDescription ?? "missing result")
         return
     }
 
-    print(result)
+    print(classifier)
 }
 
 //:### Delete a classifier

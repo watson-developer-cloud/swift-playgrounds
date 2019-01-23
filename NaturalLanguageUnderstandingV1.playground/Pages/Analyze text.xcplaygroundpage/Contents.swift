@@ -135,7 +135,8 @@ naturalLanguageUnderstanding.analyze(features: relations, text: text2) {
 
 //:### Semantic Roles
 
-let text3 = "IBM has one of the largest in the world"
+let text3 = "IBM has one of the largest" +
+            " workforces in the world"
 let semanticRoles = Features(semanticRoles: SemanticRolesOptions())
 naturalLanguageUnderstanding.analyze(features: semanticRoles, text: text3) {
     response, error in

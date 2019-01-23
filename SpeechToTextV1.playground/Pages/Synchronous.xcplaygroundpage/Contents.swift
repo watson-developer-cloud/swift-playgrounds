@@ -21,10 +21,10 @@ settings.keywordsThreshold = 0.5
 speechToText.recognize(audio: audio, settings: settings) {
     response, error in
 
-    guard let models = response?.result else {
+    guard let results = response?.result else {
         print(error?.localizedDescription ?? "missing result")
         return
     }
 
-    print(models)
+    print(results)
 }

@@ -58,12 +58,12 @@ textToSpeech.addWord(customizationID: customizationID, word: "ACLs", translation
 textToSpeech.getWord(customizationID: customizationID, word: "ACLs") {
     response, error in
 
-    guard let translation = response?.result else {
+    guard let word = response?.result else {
         print(error?.localizedDescription ?? "missing result")
         return
     }
 
-    print(translation)
+    print(word)
 }
 
 //:### Delete a custom word

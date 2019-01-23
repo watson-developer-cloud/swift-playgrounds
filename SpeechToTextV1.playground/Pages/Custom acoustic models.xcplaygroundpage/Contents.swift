@@ -30,7 +30,7 @@ speechToText.createAcousticModel(
 
 //:### List custom acoustic models
 
-speechToText.listAcousticModels() {
+speechToText.listAcousticModels(language: "en-US") {
     response, error in
 
     guard let models = response?.result else {

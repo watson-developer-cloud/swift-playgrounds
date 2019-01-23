@@ -11,7 +11,7 @@ let speechToText = setupSpeechToTextV1()
 
 //:### Delete labeled data
 
-speechToText.deleteUserData(customerID: "{id}") {
+speechToText.deleteUserData(customerID: "{my_customer_ID}") {
     _, error in
 
     if let error = error {
