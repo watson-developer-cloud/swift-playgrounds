@@ -25,7 +25,13 @@ naturalLanguageClassifier.classify(classifierID: classifierID, text: "How hot wi
 
 //:### Classify multiple phrases
 
-naturalLanguageClassifier.classify(classifierID: String, collection: [ClassifyInput]) {
+naturalLanguageClassifier.classifyCollection(
+    classifierID: classifierID,
+    collection: [
+        ClassifyInput(text: "How hot will it be today?"),
+        ClassifyInput(text: "Is it hot outside?")
+    ])
+{
     response, error in
 
     guard let classifications = response?.result else {
