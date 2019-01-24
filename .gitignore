@@ -70,3 +70,5 @@ fastlane/test_output
 
 # Credentials
 Sources/WatsonCredentials.swift
+CompareComplyV1.playground/Resources/cloud-object-storage-credentials-input.json
+CompareComplyV1.playground/Resources/cloud-object-storage-credentials-output.json
