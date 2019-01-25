@@ -1,7 +1,7 @@
 
 import CompareComplyV1
 
-public func setupCompareComplyV1() -> CompareComplyV1 {
+public func setupCompareComplyV1() -> CompareComply {
 
     let version = "2018-10-15"
     let apiKey = WatsonCredentials.CompareComplyV1APIKey
@@ -38,8 +38,56 @@ func prettyPrint<T : Encodable>(object: T) -> String? {
     }
 }
 
-//extension MessageResponse: CustomStringConvertible {
-//    public var description: String {
-//        return prettyPrint(object: self) ?? "broke"
-//    }
-//}
+extension HTMLReturn: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension ClassifyReturn: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension TableReturn: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension CompareReturn: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension FeedbackReturn: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension FeedbackList: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension GetFeedback: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension BatchStatus: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension Batches: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}

@@ -3,5 +3,10 @@
     <pages>
         <page name='Introduction'/>
         <page name='HTML conversion'/>
+        <page name='Element classification'/>
+        <page name='Tables'/>
+        <page name='Comparison'/>
+        <page name='Feedback'/>
+        <page name='Batches'/>
     </pages>
 </playground>
