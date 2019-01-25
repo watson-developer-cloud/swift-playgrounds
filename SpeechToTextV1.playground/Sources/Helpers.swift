@@ -180,3 +180,17 @@ extension AudioListing: CustomStringConvertible {
         return prettyPrint(object: self) ?? "broke"
     }
 }
+
+// Custom grammars
+
+extension Grammar: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension Grammars: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
