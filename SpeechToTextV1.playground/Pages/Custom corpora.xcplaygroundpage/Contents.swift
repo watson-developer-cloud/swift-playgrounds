@@ -1,4 +1,4 @@
-//:## Custom language models
+//:## Custom corpora
 
 import PlaygroundSupport
 

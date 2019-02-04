@@ -1,4 +1,4 @@
-//:## Custom words
+//:## Custom grammars
 
 import PlaygroundSupport
 
