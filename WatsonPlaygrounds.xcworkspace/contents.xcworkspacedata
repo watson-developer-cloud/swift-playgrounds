@@ -11,6 +11,9 @@
       location = "group:AssistantV2.playground">
    </FileRef>
    <FileRef
+      location = "group:CompareComplyV1.playground">
+   </FileRef>
+   <FileRef
       location = "group:DiscoveryV1.playground">
    </FileRef>
    <FileRef

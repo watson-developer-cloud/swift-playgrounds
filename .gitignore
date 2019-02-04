@@ -70,3 +70,5 @@ fastlane/test_output
 
 # Credentials
 Sources/WatsonCredentials.swift
+CompareComplyV1.playground/Resources/cos_input_creds.json
+CompareComplyV1.playground/Resources/cos_output_creds.json

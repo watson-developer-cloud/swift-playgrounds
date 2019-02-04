@@ -22,6 +22,9 @@ public struct WatsonCredentials {
     public static let AssistantV2URL: String? = nil
     public static let AssistantV2ID = "your-assistant-id-here"
 
+    public static let CompareComplyV1APIKey = "your-api-key-here"
+    public static let CompareComplyURL: String? = nil
+
     public static let DiscoveryV1APIKey: String = "your-api-key-here"
     public static let DiscoveryV1URL: String? = nil
 
