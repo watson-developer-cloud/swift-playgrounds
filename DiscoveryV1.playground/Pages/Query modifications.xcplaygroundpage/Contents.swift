@@ -1,20 +1,19 @@
-///:## Query modifications
-
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
+//:## Query modifications
 
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-let environmentID: String! = getEnvironmentID()
-let collectionID: String! = getCollectionID(environmentID: environmentID)
+let environmentID = getEnvironmentID()
+let collectionID = getCollectionID(environmentID: environmentID)
 
 //:### Create or update expansion list
 
 let expansion = Expansion(expandedTerms: ["international business machines", "big blue"], inputTerms: ["ibm"])
-discovery.createExpansions(environmentID: environmentID, collectionID: collectionID, expansions: [expansion]) {
+discovery.createExpansions(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    expansions: [expansion])
+{
     response, error in
 
     guard let expansions = response?.result else {
@@ -43,8 +42,8 @@ discovery.listExpansions(environmentID: environmentID, collectionID: collectionI
 discovery.deleteExpansions(environmentID: environmentID, collectionID: collectionID) {
     _, error in
 
-    guard error == nil else {
-        print(error?.localizedDescription ?? "unexpected error")
+    if let error = error {
+        print(error.localizedDescription ?? "unexpected error")
         return
     }
 
@@ -53,8 +52,17 @@ discovery.deleteExpansions(environmentID: environmentID, collectionID: collectio
 
 //:### Create tokenization dictionary
 
-let tokenizationRule = TokenDictRule(text: "すしネコ", tokens: ["すし", "ネコ"], readings: ["寿司", "ネコ"], partOfSpeech: "カスタム名詞")
-discovery.createTokenizationDictionary(environmentID: environmentID, collectionID: collectionID, tokenizationRules: [tokenizationRule]) {
+let tokenizationRule = TokenDictRule(
+    text: "すしネコ",
+    tokens: ["すし", "ネコ"],
+    readings: ["寿司", "ネコ"],
+    partOfSpeech: "カスタム名詞"
+)
+discovery.createTokenizationDictionary(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    tokenizationRules: [tokenizationRule])
+{
     response, error in
 
     guard let tokenDictStatus = response?.result else {
@@ -81,13 +89,43 @@ discovery.getTokenizationDictionaryStatus(environmentID: environmentID, collecti
 //:### Delete tokenization dictionary
 
 discovery.deleteTokenizationDictionary(environmentID: environmentID, collectionID: collectionID) {
-    response, error in
+    _, error in
 
-    guard error == nil else {
-        print(error?.localizedDescription ?? "unexpected error")
+    if let error = error {
+        print(error.localizedDescription ?? "unexpected error")
         return
     }
 
     print("tokenization dictionary deleted")
 }
 
+//:### Create stopword list
+
+let stopwords = Bundle.main.url(forResource: "stopwords", withExtension: "txt")!
+discovery.createStopwordList(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    stopwordFile: stopwords)
+{
+    response, error in
+
+    guard let tokenDictStatus = response?.result else {
+        print(error?.localizedDescription ?? "unexpected error")
+        return
+    }
+
+    print(tokenDictStatus)
+}
+
+//:### Delete a custom stopword list
+
+discovery.deleteStopwordList(environmentID: environmentID, collectionID: collectionID) {
+    _, error in
+
+    if let error = error {
+        print(error.localizedDescription)
+        return
+    }
+
+    print("success")
+}

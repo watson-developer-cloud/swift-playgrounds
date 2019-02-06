@@ -1,22 +1,21 @@
-///:## Documents
-
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
+//:## Documents
 
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-let environmentID: String! = getEnvironmentID()
-let collectionID: String! = getCollectionID(environmentID: environmentID)
-var documentID: String!
+let environmentID = getEnvironmentID()
+let collectionID = getCollectionID(environmentID: environmentID)
+var documentID = ""
 
 //:### Add a document
 
 let sample1 = Bundle.main.url(forResource: "sample1", withExtension: "html")
 
-discovery.addDocument(environmentID: environmentID, collectionID: collectionID, file: sample1) {
+discovery.addDocument(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    file: sample1)
+{
     response, error in
 
     guard let accepted = response?.result else {
@@ -24,13 +23,17 @@ discovery.addDocument(environmentID: environmentID, collectionID: collectionID, 
         return
     }
 
-    documentID = accepted.documentID
+    documentID = accepted.documentID ?? ""
     print(accepted)
 }
 
 //:### Get document details
 
-discovery.getDocumentStatus(environmentID: environmentID, collectionID: collectionID, documentID: documentID) {
+discovery.getDocumentStatus(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    documentID: documentID)
+{
     response, error in
 
     guard let status = response?.result else {
@@ -43,7 +46,12 @@ discovery.getDocumentStatus(environmentID: environmentID, collectionID: collecti
 
 //:### Update a document
 
-discovery.updateDocument(environmentID: environmentID, collectionID: collectionID, documentID: documentID, metadata: "{ \"Creator\": \"IBM\" }") {
+discovery.updateDocument(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    documentID: documentID,
+    metadata: "{ \"Creator\": \"IBM\" }")
+{
     response, error in
 
     guard let accepted = response?.result else {
@@ -56,7 +64,11 @@ discovery.updateDocument(environmentID: environmentID, collectionID: collectionI
 
 //:### Delete a document
 
-discovery.deleteDocument(environmentID: environmentID, collectionID: collectionID, documentID: documentID) {
+discovery.deleteDocument(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    documentID: documentID)
+{
     response, error in
 
     guard let _ = response?.result else {

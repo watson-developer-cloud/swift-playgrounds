@@ -1,10 +1,5 @@
 //:## User data
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()

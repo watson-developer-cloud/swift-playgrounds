@@ -1,20 +1,21 @@
 //:## Collections
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-let environmentID: String! = getEnvironmentID()
-let configurationID: String! = getConfigurationID(environmentID: environmentID)
-var collectionID: String!
+let environmentID = getEnvironmentID()
+let configurationID = getConfigurationID(environmentID: environmentID)
+var collectionID = ""
 
 //:### Create a collection
 
-discovery.createCollection(environmentID: environmentID, name: "test_collection", description: "My test collection", configurationID: configurationID, language: "en") {
+discovery.createCollection(
+    environmentID: environmentID,
+    name: "test_collection",
+    description: "My test collection",
+    configurationID: configurationID,
+    language: "en")
+{
     response, error in
 
     guard let collection = response?.result else {
@@ -22,7 +23,7 @@ discovery.createCollection(environmentID: environmentID, name: "test_collection"
         return
     }
 
-    collectionID = collection.collectionID
+    collectionID = collection.collectionID ?? ""
     print(collection)
 }
 
@@ -54,7 +55,12 @@ discovery.getCollection(environmentID: environmentID, collectionID: collectionID
 
 //:### Update a collection
 
-discovery.updateCollection(environmentID: environmentID, collectionID: collectionID, name: "test_collection", description: "My updated test collection") {
+discovery.updateCollection(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    name: "test_collection",
+    description: "My updated test collection")
+{
     response, error in
 
     guard let collection = response?.result else {

@@ -1,17 +1,12 @@
 //:## Events and feedback
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-let environmentID: String! = getEnvironmentID()
-let collectionID: String! = getCollectionID(environmentID: environmentID)
-let documentID: String! = getDocumentID(environmentID: environmentID, collectionID: collectionID)
-let sessionToken: String! = getSessionToken(environmentID: environmentID, collectionID: collectionID)
+let environmentID = getEnvironmentID()
+let collectionID = getCollectionID(environmentID: environmentID)
+let documentID = getDocumentID(environmentID: environmentID, collectionID: collectionID)
+let sessionToken = getSessionToken(environmentID: environmentID, collectionID: collectionID)
 
 let formatter = DateFormatter()
 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
@@ -19,7 +14,13 @@ formatter.date(from: "2018-01-29T14:58:39.470Z")!
 
 //:### Create event
 
-let eventData = EventData(environmentID: environmentID, sessionToken: sessionToken, collectionID: collectionID, documentID: documentID, /*clientTimestamp: formatter.date(from: "2018-01-29T14:58:39.470Z")!,*/ displayRank: 1)
+let eventData = EventData(
+    environmentID: environmentID,
+    sessionToken: sessionToken,
+    collectionID: collectionID,
+    documentID: documentID,
+    /*clientTimestamp: formatter.date(from: "2018-01-29T14:58:39.470Z")!,*/
+    displayRank: 1)
 discovery.createEvent(type: "click", data: eventData) {
     response, error in
 

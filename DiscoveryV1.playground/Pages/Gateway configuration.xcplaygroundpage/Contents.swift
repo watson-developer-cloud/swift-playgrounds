@@ -1,14 +1,9 @@
 //:## Gateway Configuration
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-let environmentID: String! = getEnvironmentID()
+let environmentID = getEnvironmentID()
 var gatewayID = ""
 
 //:### List gateways
@@ -34,7 +29,7 @@ discovery.createGateway(environmentID: environmentID, name: "gateway_name") {
         return
     }
 
-    gatewayID = gateway.gatewayID!
+    gatewayID = gateway.gatewayID ?? ""
     print(gateway)
 }
 

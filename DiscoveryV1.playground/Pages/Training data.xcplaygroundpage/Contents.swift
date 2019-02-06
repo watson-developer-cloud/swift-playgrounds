@@ -1,16 +1,11 @@
 //:## Training data
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-let environmentID: String! = getEnvironmentID()
-let collectionID: String! = getCollectionID(environmentID: environmentID)
-var queryID: String!
+let environmentID = getEnvironmentID()
+let collectionID = getCollectionID(environmentID: environmentID)
+var queryID = ""
 
 //:### List training data
 
@@ -27,9 +22,20 @@ discovery.listTrainingData(environmentID: environmentID, collectionID: collectio
 
 //:### Add query to training data
 
-let examples = [TrainingExample(documentID: "adaf50f1-2526-4fad-b670-7d6e8a42e6e6", relevance: 2),
-                TrainingExample(documentID: "63919442-7d5b-4cae-ab7e-56f58b1390fe", crossReference: "my_id_field:14", relevance: 4)]
-discovery.addTrainingData(environmentID: environmentID, collectionID: collectionID, naturalLanguageQuery: "who is keyser soze", filter: "text:criminology", examples: examples) {
+let examples = [TrainingExample(
+                    documentID: "adaf50f1-2526-4fad-b670-7d6e8a42e6e6",
+                    relevance: 2),
+                TrainingExample(
+                    documentID: "63919442-7d5b-4cae-ab7e-56f58b1390fe",
+                    crossReference: "my_id_field:14",
+                    relevance: 4)]
+discovery.addTrainingData(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    naturalLanguageQuery: "who is keyser soze",
+    filter: "text:criminology",
+    examples: examples)
+{
     response, error in
 
     guard let trainingQuery = response?.result else {
@@ -37,14 +43,17 @@ discovery.addTrainingData(environmentID: environmentID, collectionID: collection
         return
     }
 
-    queryID = trainingQuery.queryID
+    queryID = trainingQuery.queryID ?? ""
     print(trainingQuery)
 }
-queryID = "d599eda5f43f630cb3ee174760a37bca49ef0643"
 
 //:### Get details about a query
 
-discovery.getTrainingData(environmentID: environmentID, collectionID: collectionID, queryID: queryID) {
+discovery.getTrainingData(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    queryID: queryID)
+{
     response, error in
 
     guard let trainingQuery = response?.result else {
@@ -52,13 +61,16 @@ discovery.getTrainingData(environmentID: environmentID, collectionID: collection
         return
     }
 
-    queryID = trainingQuery.queryID
     print(trainingQuery)
 }
 
 //:### List examples for a training data query
 
-discovery.listTrainingExamples(environmentID: environmentID, collectionID: collectionID, queryID: queryID) {
+discovery.listTrainingExamples(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    queryID: queryID)
+{
     response, error in
 
     guard let examples = response?.result else {
@@ -72,7 +84,14 @@ discovery.listTrainingExamples(environmentID: environmentID, collectionID: colle
 //;### Add example to training data query
 
 var exampleID = "540411ca-f2fd-4a02-aad4-870e4a430fb1"
-discovery.createTrainingExample(environmentID: environmentID, collectionID: collectionID, queryID: queryID, documentID: exampleID, crossReference: "my_id_field:12", relevance: 3) {
+discovery.createTrainingExample(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    queryID: queryID,
+    documentID: exampleID,
+    crossReference: "my_id_field:12",
+    relevance: 3)
+{
     response, error in
 
     guard let example = response?.result else {
@@ -85,7 +104,13 @@ discovery.createTrainingExample(environmentID: environmentID, collectionID: coll
 
 //:### Change label or cross reference for example
 
-discovery.updateTrainingExample(environmentID: environmentID, collectionID: collectionID, queryID: queryID, exampleID: exampleID, crossReference: "other_field:6") {
+discovery.updateTrainingExample(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    queryID: queryID,
+    exampleID: exampleID,
+    crossReference: "other_field:6")
+{
     response, error in
 
     guard let example = response?.result else {
@@ -98,7 +123,12 @@ discovery.updateTrainingExample(environmentID: environmentID, collectionID: coll
 
 //:### Get details for training data example
 
-discovery.getTrainingExample(environmentID: environmentID, collectionID: collectionID, queryID: queryID, exampleID: exampleID) {
+discovery.getTrainingExample(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    queryID: queryID,
+    exampleID: exampleID)
+{
     response, error in
 
     guard let example = response?.result else {
@@ -111,7 +141,12 @@ discovery.getTrainingExample(environmentID: environmentID, collectionID: collect
 
 //:### Delete example for training data query
 
-discovery.deleteTrainingExample(environmentID: environmentID, collectionID: collectionID, queryID: queryID, exampleID: exampleID) {
+discovery.deleteTrainingExample(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    queryID: queryID,
+    exampleID: exampleID)
+{
     _, error in
 
     if let error = error {
@@ -124,7 +159,11 @@ discovery.deleteTrainingExample(environmentID: environmentID, collectionID: coll
 
 //:### Delete a training query
 
-discovery.deleteTrainingData(environmentID: environmentID, collectionID: collectionID, queryID: queryID) {
+discovery.deleteTrainingData(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    queryID: queryID)
+{
     _, error in
 
     if let error = error {

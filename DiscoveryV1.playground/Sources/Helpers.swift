@@ -16,7 +16,7 @@ public func setupDiscoveryV1() -> Discovery {
 }
 
 // Find or create a readWrite environment
-public func getEnvironmentID() -> String? {
+public func getEnvironmentID() -> String {
 
     let discovery = setupDiscoveryV1()
 
@@ -45,11 +45,11 @@ public func getEnvironmentID() -> String? {
     }
 
     while environmentID == nil { sleep(1) }
-    return environmentID
+    return environmentID!
 }
 
 // Find or create a configuration named "my_config"
-public func getConfigurationID(environmentID: String) -> String? {
+public func getConfigurationID(environmentID: String) -> String {
 
     let discovery = setupDiscoveryV1()
 
@@ -78,11 +78,11 @@ public func getConfigurationID(environmentID: String) -> String? {
     }
 
     while configurationID == nil { sleep(1) }
-    return configurationID
+    return configurationID!
 }
 
 // Find or create a collection named "my_collection"
-public func getCollectionID(environmentID: String) -> String? {
+public func getCollectionID(environmentID: String) -> String {
 
     let discovery = setupDiscoveryV1()
 
@@ -111,11 +111,11 @@ public func getCollectionID(environmentID: String) -> String? {
     }
 
     while collectionID == nil { sleep(1) }
-    return collectionID
+    return collectionID!
 }
 
 // Find or create a document in the specified collection
-public func getDocumentID(environmentID: String, collectionID: String) -> String? {
+public func getDocumentID(environmentID: String, collectionID: String) -> String {
 
     let discovery = setupDiscoveryV1()
 
@@ -146,10 +146,10 @@ public func getDocumentID(environmentID: String, collectionID: String) -> String
     }
 
     while documentID == nil { sleep(1) }
-    return documentID
+    return documentID!
 }
 
-public func getSessionToken(environmentID: String, collectionID: String) -> String? {
+public func getSessionToken(environmentID: String, collectionID: String) -> String {
 
     let discovery = setupDiscoveryV1()
 
@@ -166,7 +166,7 @@ public func getSessionToken(environmentID: String, collectionID: String) -> Stri
     }
 
     while sessionToken == nil { sleep(1) }
-    return sessionToken
+    return sessionToken!
 }
 
 public var encoder: JSONEncoder {
@@ -294,6 +294,12 @@ extension DocumentStatus: CustomStringConvertible {
 // Queries
 
 extension QueryResponse: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}
+
+extension QueryNoticesResponse: CustomStringConvertible {
     public var description: String {
         return prettyPrint(object: self) ?? "broke"
     }

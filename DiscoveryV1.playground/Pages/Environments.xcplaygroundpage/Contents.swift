@@ -1,14 +1,9 @@
 //:## Environments
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-var environmentID: String!
+var environmentID = ""
 
 //:### List environments
 
@@ -52,7 +47,11 @@ discovery.getEnvironment(environmentID: environmentID) {
 
 //:### Update an environment
 
-discovery.updateEnvironment(environmentID: environmentID, name: "Updated name", description: "Updated description") {
+discovery.updateEnvironment(
+    environmentID: environmentID,
+    name: "Updated name",
+    description: "Updated description")
+{
     response, error in
 
     guard let environment = response?.result else {

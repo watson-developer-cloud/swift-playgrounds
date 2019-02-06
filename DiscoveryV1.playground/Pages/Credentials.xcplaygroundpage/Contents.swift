@@ -1,14 +1,9 @@
 //:## Credentials
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-let environmentID: String! = getEnvironmentID()
+let environmentID = getEnvironmentID()
 var credentialsID = ""
 
 //:### List credentials
@@ -26,8 +21,17 @@ discovery.listCredentials(environmentID: environmentID) {
 
 //:### Create credentials
 
-let details = CredentialDetails(credentialType: "username_password", url: "https://login.salesforce.com", username: "email@server.xyz", password: "{my_salesforce_password}{my_salesforce_security_token}")
-discovery.createCredentials(environmentID: environmentID, sourceType: "salesforce", credentialDetails: details) {
+let details = CredentialDetails(
+    credentialType: "username_password",
+    url: "https://login.salesforce.com",
+    username: "email@server.xyz",
+    password: "{my_salesforce_password}{my_salesforce_security_token}")
+
+discovery.createCredentials(
+    environmentID: environmentID,
+    sourceType: "salesforce",
+    credentialDetails: details)
+{
     response, error in
 
     guard let credentials = response?.result else {
@@ -35,7 +39,7 @@ discovery.createCredentials(environmentID: environmentID, sourceType: "salesforc
         return
     }
 
-    credentialsID = credentials.credentialID!
+    credentialsID = credentials.credentialID ?? ""
     print(credentials)
 }
 
@@ -54,7 +58,11 @@ discovery.getCredentials(environmentID: environmentID, credentialID: credentials
 
 //:### Update credentials
 
-let updatedDetails = CredentialDetails(credentialType: "username_password", url: "https://login.salesforce.com", username: "email@server.abc", password: "{my_salesforce_password}{my_salesforce_security_token}")
+let updatedDetails = CredentialDetails(
+    credentialType: "username_password",
+    url: "https://login.salesforce.com",
+    username: "email@server.abc",
+    password: "{my_salesforce_password}{my_salesforce_security_token}")
 
 discovery.updateCredentials(environmentID: environmentID, credentialID: credentialsID, sourceType: "salesforce", credentialDetails: updatedDetails) {
     response, error in
