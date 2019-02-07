@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='5.0' target-platform='ios' executeOnSourceChanges='false'>
-    <timeline fileName='timeline.xctimeline'/>
+<playground version='6.0' target-platform='ios' display-mode='raw' executeOnSourceChanges='false'>
+    <pages>
+        <page name='Introduction'/>
+        <page name='Environments'/>
+        <page name='Configurations'/>
+        <page name='Collections'/>
+        <page name='Query modifications'/>
+        <page name='Documents'/>
+        <page name='Queries'/>
+        <page name='Training data'/>
+        <page name='User data'/>
+        <page name='Events and feedback'/>
+        <page name='Credentials'/>
+        <page name='Gateway configuration'/>
+    </pages>
 </playground>
