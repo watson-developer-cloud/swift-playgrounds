@@ -1,14 +1,9 @@
 //:## Intents
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import AssistantV1
 
 let assistant = setupAssistantV1()
-let workspaceID = WatsonCredentials.AssistantV1Workspace
+let workspaceID = getWorkspaceID()
 
 //:### List Intents
 
@@ -86,4 +81,3 @@ assistant.deleteIntent(workspaceID: workspaceID, intent: "hello") {
 
     print("intent deleted")
 }
-

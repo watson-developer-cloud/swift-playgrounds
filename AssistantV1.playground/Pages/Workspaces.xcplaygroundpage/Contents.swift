@@ -1,10 +1,5 @@
 //:## Workspaces
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import AssistantV1
 
 let assistant = setupAssistantV1()
@@ -76,4 +71,3 @@ assistant.deleteWorkspace(workspaceID: workspaceID) {
 
     print("workspace deleted")
 }
-
