@@ -1,8 +1,7 @@
 
 import AssistantV1
 
-public func setupAssistantV1() -> Assistant {
-
+var assistant: Assistant = {
     let version = "2018-10-15"
     let apiKey = WatsonCredentials.AssistantV1APIKey
 
@@ -14,13 +13,14 @@ public func setupAssistantV1() -> Assistant {
     }
 
     return assistant
+}()
+
+public func setupAssistantV1() -> Assistant {
+    return assistant
 }
 
 // Find or create a readWrite workspace
 public func getWorkspaceID() -> String {
-
-    let assistant = setupAssistantV1()
-
     var workspaceID: String?
     assistant.listWorkspaces() {
         response, error in
@@ -49,10 +49,11 @@ public func getWorkspaceID() -> String {
     return workspaceID!
 }
 
+let sampleIntent = "hello"
+
 public func createSampleIntent(workspaceID: String) {
-    let assistant = setupAssistantV1()
     var created = false
-    assistant.getIntent(workspaceID: workspaceID, intent: "hello") {
+    assistant.getIntent(workspaceID: workspaceID, intent: sampleIntent) {
         _, error in
 
         if let error = error {
@@ -65,7 +66,7 @@ public func createSampleIntent(workspaceID: String) {
 
             assistant.createIntent(
                 workspaceID: workspaceID,
-                intent: "hello",
+                intent: sampleIntent,
                 examples: [
                     CreateExample(text: "Good afternoon"),
                     CreateExample(text: "Hi there")
@@ -89,8 +90,7 @@ public func createSampleIntent(workspaceID: String) {
 }
 
 public func deleteSampleIntent(workspaceID: String) {
-    let assistant = setupAssistantV1()
-    assistant.deleteIntent(workspaceID: workspaceID, intent: "hello") {
+    assistant.deleteIntent(workspaceID: workspaceID, intent: sampleIntent) {
         _, error in
 
         if let error = error {
@@ -100,10 +100,11 @@ public func deleteSampleIntent(workspaceID: String) {
     }
 }
 
+let sampleEntity = "beverage"
+
 public func createSampleEntity(workspaceID: String) {
-    let assistant = setupAssistantV1()
     var created = false
-    assistant.getEntity(workspaceID: workspaceID, entity: "beverage") {
+    assistant.getEntity(workspaceID: workspaceID, entity: sampleEntity) {
         _, error in
 
         if let error = error {
@@ -116,7 +117,7 @@ public func createSampleEntity(workspaceID: String) {
 
             assistant.createEntity(
                 workspaceID: workspaceID,
-                entity: "beverage",
+                entity: sampleEntity,
                 values: [
                     CreateValue(value: "water"),
                     CreateValue(value: "orange juice"),
@@ -141,8 +142,7 @@ public func createSampleEntity(workspaceID: String) {
 }
 
 public func deleteSampleEntity(workspaceID: String) {
-    let assistant = setupAssistantV1()
-    assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
+    assistant.deleteEntity(workspaceID: workspaceID, entity: sampleEntity) {
         _, error in
 
         if let error = error {
