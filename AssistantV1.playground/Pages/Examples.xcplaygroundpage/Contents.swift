@@ -4,8 +4,9 @@ import AssistantV1
 
 let assistant = setupAssistantV1()
 let workspaceID = getWorkspaceID()
-let intent = "hello"
 
+// Setup
+let intent = "hello"
 createSampleIntent(workspaceID: workspaceID)
 
 //:### List user input examples

@@ -4,6 +4,9 @@ import AssistantV1
 
 let assistant = setupAssistantV1()
 let workspaceID = getWorkspaceID()
+
+// Setup
+
 createSampleEntity(workspaceID: workspaceID)
 
 //:### List entity value synonyms
