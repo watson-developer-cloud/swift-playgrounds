@@ -1,8 +1,7 @@
 
 import AssistantV1
 
-public func setupAssistantV1() -> Assistant {
-
+var assistant: Assistant = {
     let version = "2018-10-15"
     let apiKey = WatsonCredentials.AssistantV1APIKey
 
@@ -14,6 +13,143 @@ public func setupAssistantV1() -> Assistant {
     }
 
     return assistant
+}()
+
+public func setupAssistantV1() -> Assistant {
+    return assistant
+}
+
+// Find or create a readWrite workspace
+public func getWorkspaceID() -> String {
+    var workspaceID: String?
+    assistant.listWorkspaces() {
+        response, error in
+
+        guard let result = response?.result else {
+            assertionFailure(error?.localizedDescription ?? "unexpected error")
+            return
+        }
+
+        workspaceID = result.workspaces.first?.workspaceID
+        if workspaceID == nil {
+            assistant.createWorkspace(name: "my_environment", description: "My environment") {
+                response, error in
+
+                guard let workspace = response?.result else {
+                    assertionFailure(error?.localizedDescription ?? "unexpected error")
+                    return
+                }
+
+                workspaceID = workspace.workspaceID
+            }
+        }
+    }
+
+    while workspaceID == nil { sleep(1) }
+    return workspaceID!
+}
+
+let sampleIntent = "hello"
+
+public func createSampleIntent(workspaceID: String) {
+    var created = false
+    assistant.getIntent(workspaceID: workspaceID, intent: sampleIntent) {
+        _, error in
+
+        if let error = error {
+            if case let .http(statusCode, _, _) = error, statusCode == 404 {
+                // Not Found -- fall through to creation
+            } else {
+                print(error.localizedDescription)
+                return
+            }
+
+            assistant.createIntent(
+                workspaceID: workspaceID,
+                intent: sampleIntent,
+                examples: [
+                    CreateExample(text: "Good afternoon"),
+                    CreateExample(text: "Hi there")
+                ])
+            {
+                _, error in
+
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+
+                created = true
+            }
+        }
+
+        created = true
+    }
+    while !created { sleep(1) }
+    return
+}
+
+public func deleteSampleIntent(workspaceID: String) {
+    assistant.deleteIntent(workspaceID: workspaceID, intent: sampleIntent) {
+        _, error in
+
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+    }
+}
+
+let sampleEntity = "beverage"
+
+public func createSampleEntity(workspaceID: String) {
+    var created = false
+    assistant.getEntity(workspaceID: workspaceID, entity: sampleEntity) {
+        _, error in
+
+        if let error = error {
+            if case let .http(statusCode, _, _) = error, statusCode == 404 {
+                // Not Found -- fall through to creation
+            } else {
+                print(error.localizedDescription)
+                return
+            }
+
+            assistant.createEntity(
+                workspaceID: workspaceID,
+                entity: sampleEntity,
+                values: [
+                    CreateValue(value: "water"),
+                    CreateValue(value: "orange juice"),
+                    CreateValue(value: "soda")
+                ])
+            {
+                _, error in
+
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+
+                created = true
+            }
+        }
+
+        created = true
+    }
+    while !created { sleep(1) }
+    return
+}
+
+public func deleteSampleEntity(workspaceID: String) {
+    assistant.deleteEntity(workspaceID: workspaceID, entity: sampleEntity) {
+        _, error in
+
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+    }
 }
 
 public var encoder: JSONEncoder {

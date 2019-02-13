@@ -1,33 +1,13 @@
 //:## Synonyms
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import AssistantV1
 
 let assistant = setupAssistantV1()
-let workspaceID = WatsonCredentials.AssistantV1Workspace
+let workspaceID = getWorkspaceID()
 
 // Setup
 
-assistant.createEntity(
-    workspaceID: workspaceID,
-    entity: "beverage",
-    values: [
-        CreateValue(value: "water"),
-        CreateValue(value: "orange juice"),
-        CreateValue(value: "soda", synonyms: ["pop", "soft drink"])
-    ])
-{
-    response, error in
-
-    guard let entity = response?.result else {
-        print(error?.localizedDescription ?? "unknown error")
-        return
-    }
-}
+createSampleEntity(workspaceID: workspaceID)
 
 //:### List entity value synonyms
 
@@ -117,11 +97,4 @@ assistant.deleteSynonym(
 
 // Cleanup
 
-assistant.deleteEntity(workspaceID: workspaceID, entity: "beverage") {
-    _, error in
-
-    if let error = error {
-        print(error.localizedDescription)
-        return
-    }
-}
+deleteSampleEntity(workspaceID: workspaceID)

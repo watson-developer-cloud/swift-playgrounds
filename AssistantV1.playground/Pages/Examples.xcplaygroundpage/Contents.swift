@@ -1,33 +1,13 @@
 //:## Examples
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import AssistantV1
 
 let assistant = setupAssistantV1()
-let workspaceID = WatsonCredentials.AssistantV1Workspace
-let intent = "hello"
+let workspaceID = getWorkspaceID()
 
 // Setup
-
-assistant.createIntent(
-    workspaceID: workspaceID,
-    intent: "hello",
-    examples: [
-        CreateExample(text: "Good afternoon"),
-        CreateExample(text: "Hi there")
-    ])
-{
-    response, error in
-
-    guard let intent = response?.result else {
-        print(error?.localizedDescription ?? "unknown error")
-        return
-    }
-}
+let intent = "hello"
+createSampleIntent(workspaceID: workspaceID)
 
 //:### List user input examples
 
@@ -96,12 +76,4 @@ assistant.deleteExample(workspaceID: workspaceID, intent: intent, text: "Good af
 
 // Cleanup
 
-assistant.deleteIntent(workspaceID: workspaceID, intent: "hello") {
-    _, error in
-
-    if let error = error {
-        print(error.localizedDescription)
-        return
-    }
-}
-
+deleteSampleIntent(workspaceID: workspaceID)
