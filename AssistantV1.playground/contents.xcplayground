@@ -2,17 +2,17 @@
 <playground version='6.0' target-platform='ios' executeOnSourceChanges='false'>
     <pages>
         <page name='Introduction'/>
-        <page name='Message'/>
-        <page name='Workspaces'/>
-        <page name='Intents'/>
-        <page name='Examples'/>
         <page name='Counterexamples'/>
-        <page name='Entities'/>
-        <page name='Mentions'/>
-        <page name='Values'/>
-        <page name='Synonyms'/>
         <page name='Dialog nodes'/>
+        <page name='Entities'/>
+        <page name='Examples'/>
+        <page name='Intents'/>
         <page name='Logs'/>
+        <page name='Mentions'/>
+        <page name='Message'/>
+        <page name='Synonyms'/>
         <page name='User data'/>
+        <page name='Values'/>
+        <page name='Workspaces'/>
     </pages>
 </playground>
