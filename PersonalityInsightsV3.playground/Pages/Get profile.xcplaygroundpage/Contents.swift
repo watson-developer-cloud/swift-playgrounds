@@ -1,10 +1,5 @@
 //:## Get profile
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import PersonalityInsightsV3
 
 let personalityInsights = setupPersonalityInsightsV3()

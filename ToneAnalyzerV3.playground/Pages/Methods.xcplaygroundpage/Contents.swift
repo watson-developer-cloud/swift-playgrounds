@@ -1,10 +1,5 @@
 //:## Methods
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import ToneAnalyzerV3
 
 let toneAnalyzer = setupToneAnalyzerV3()

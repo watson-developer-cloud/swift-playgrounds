@@ -1,10 +1,5 @@
 //:## Synchronous
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()

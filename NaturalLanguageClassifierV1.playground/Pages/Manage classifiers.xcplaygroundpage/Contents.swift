@@ -1,10 +1,5 @@
 //:## Manage classifiers
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import NaturalLanguageClassifierV1
 
 let naturalLanguageClassifier = setupNaturalLanguageClassifierV1()

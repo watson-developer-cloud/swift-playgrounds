@@ -1,11 +1,5 @@
 //:# Natural Language Understanding V1
-
-import PlaygroundSupport
-
 //: This playground contains code examples for the Watson Assistant V1 service.
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
 
 //: To use the Watson Developer Cloud Swift SDK in your application, specify it in your `Cartfile`:
 //:```

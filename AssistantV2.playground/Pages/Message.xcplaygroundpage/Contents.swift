@@ -1,10 +1,5 @@
 //:## Message
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import AssistantV2
 
 let assistant = setupAssistantV2()
