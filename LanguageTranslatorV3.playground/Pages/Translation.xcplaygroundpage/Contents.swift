@@ -1,10 +1,5 @@
 //:## Translation
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import LanguageTranslatorV3
 
 let languageTranslator = setupLanguageTranslatorV3()

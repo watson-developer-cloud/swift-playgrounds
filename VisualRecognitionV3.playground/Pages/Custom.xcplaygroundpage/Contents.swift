@@ -1,10 +1,5 @@
 //:## Custom
 
-import PlaygroundSupport
-
-// Enable support for asynchronous completion handlers
-PlaygroundPage.current.needsIndefiniteExecution = true
-
 import VisualRecognitionV3
 
 let visualRecognition = setupVisualRecognitionV3()
