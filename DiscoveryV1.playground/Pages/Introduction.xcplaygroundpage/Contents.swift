@@ -1,5 +1,5 @@
 //:# Discovery V1
-//: This playground contains code examples for the Watson Assistant V1 service.
+//: This playground contains code examples for the Discovery V1 service.
 
 //: To use the Watson Developer Cloud Swift SDK in your application, specify it in your `Cartfile`:
 //:```
