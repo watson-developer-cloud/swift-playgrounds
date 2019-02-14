@@ -1,5 +1,5 @@
-//:# Watson Compare & Comply V1
-//: This playground contains code examples for the Watson Compare & Comply V1 service.
+//:# Compare & Comply V1
+//: This playground contains code examples for the Compare & Comply V1 service.
 
 //: To use the Watson Developer Cloud Swift SDK in your application, specify it in your `Cartfile`:
 //:```
