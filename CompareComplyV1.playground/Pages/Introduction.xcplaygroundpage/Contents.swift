@@ -15,19 +15,46 @@ import CompareComplyV1
 
 //:## Authentication
 
-let version = "2018-10-15"
 let apiKey = WatsonCredentials.CompareComplyV1APIKey
-
-let compareComply = CompareComply(version: version, apiKey: apiKey)
+let compareComply = CompareComply(version: "2018-10-15", apiKey: apiKey)
 
 //:## Service URL
 
 // Set the URL for the service endpoint if needed
-if let serviceURL = WatsonCredentials.AssistantV1URL {
-    assistant.serviceURL = serviceURL
+if let serviceURL = WatsonCredentials.CompareComplyV1URL {
+    compareComply.serviceURL = serviceURL
 }
 
-//:## Error handlinga
+//:## Error handling
 
-// TODO: Fill this in
+compareComply.listBatches() {
+    response, error in
 
+    if let error = error {
+        switch error {
+        case let .http(statusCode, message, metadata):
+            switch statusCode {
+            case .some(404):
+                // Handle Not Found (404) exception
+                print("Not found")
+            case .some(413):
+                // Handle Request Too Large (413) exception
+                print("Payload too large")
+            default:
+                if let statusCode = statusCode {
+                    print("Error - code: \(statusCode), \(message ?? "")")
+                }
+            }
+        default:
+            print(error.localizedDescription)
+        }
+        return
+    }
+
+    guard let allBatches = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
+        return
+    }
+
+    print(allBatches)
+}

@@ -15,10 +15,8 @@ import ToneAnalyzerV3
 
 //:## Authentication
 
-let version = "2018-10-15"
 let apiKey = WatsonCredentials.ToneAnalyzerV3APIKey
-
-let toneAnalyzer = ToneAnalyzer(version: version, apiKey: apiKey)
+let toneAnalyzer = ToneAnalyzer(version: "2017-09-21", apiKey: apiKey)
 
 //:## Service URL
 
@@ -29,4 +27,36 @@ if let serviceURL = WatsonCredentials.ToneAnalyzerV3URL {
 
 //:## Error handling
 
-// TODO: Fill this in
+let text = "Hi there"
+
+toneAnalyzer.tone(toneContent: .text(text)) {
+    response, error in
+
+    if let error = error {
+        switch error {
+        case let .http(statusCode, message, metadata):
+            switch statusCode {
+            case .some(404):
+                // Handle Not Found (404) exception
+                print("Not found")
+            case .some(413):
+                // Handle Request Too Large (413) exception
+                print("Payload too large")
+            default:
+                if let statusCode = statusCode {
+                    print("Error - code: \(statusCode), \(message ?? "")")
+                }
+            }
+        default:
+            print(error.localizedDescription)
+        }
+        return
+    }
+
+    guard let toneAnalysis = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
+        return
+    }
+
+    print(toneAnalysis)
+}

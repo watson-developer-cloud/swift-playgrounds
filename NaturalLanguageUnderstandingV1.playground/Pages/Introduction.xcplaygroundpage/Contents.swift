@@ -12,3 +12,49 @@
 //:```
 
 import NaturalLanguageUnderstandingV1
+
+//:## Authentication
+
+let apiKey = WatsonCredentials.NaturalLanguageUnderstandingV1APIKey
+let naturalLanguageUnderstanding = NaturalLanguageUnderstanding(version: "2018-11-16", apiKey: apiKey)
+
+//:## Service URL
+
+// Set the URL for the service endpoint if needed
+if let serviceURL = WatsonCredentials.NaturalLanguageUnderstandingV1URL {
+    naturalLanguageUnderstanding.serviceURL = serviceURL
+}
+
+//:## Error handling
+
+naturalLanguageUnderstanding.listModels() {
+    response, error in
+
+    if let error = error {
+        switch error {
+        case let .http(statusCode, message, metadata):
+            switch statusCode {
+            case .some(404):
+                // Handle Not Found (404) exception
+                print("Not found")
+            case .some(413):
+                // Handle Request Too Large (413) exception
+                print("Payload too large")
+            default:
+                if let statusCode = statusCode {
+                    print("Error - code: \(statusCode), \(message ?? "")")
+                }
+            }
+        default:
+            print(error.localizedDescription)
+        }
+        return
+    }
+
+    guard let models = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
+        return
+    }
+
+    print(models)
+}

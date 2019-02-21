@@ -15,10 +15,8 @@ import VisualRecognitionV3
 
 //:## Authentication
 
-let version = "2018-10-15"
 let apiKey = WatsonCredentials.VisualRecognitionV3APIKey
-
-let visualRecognition = VisualRecognition(version: version, apiKey: apiKey)
+let visualRecognition = VisualRecognition(version: "2018-03-19", apiKey: apiKey)
 
 //:## Service URL
 
@@ -29,5 +27,34 @@ if let serviceURL = WatsonCredentials.VisualRecognitionV3URL {
 
 //:## Error handling
 
-// TODO: Fill this in
+visualRecognition.listClassifiers() {
+    response, error in
 
+    if let error = error {
+        switch error {
+        case let .http(statusCode, message, metadata):
+            switch statusCode {
+            case .some(404):
+                // Handle Not Found (404) exception
+                print("Not found")
+            case .some(413):
+                // Handle Request Too Large (413) exception
+                print("Payload too large")
+            default:
+                if let statusCode = statusCode {
+                    print("Error - code: \(statusCode), \(message ?? "")")
+                }
+            }
+        default:
+            print(error.localizedDescription)
+        }
+        return
+    }
+
+    guard let classifiers = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
+        return
+    }
+
+    print(classifiers)
+}

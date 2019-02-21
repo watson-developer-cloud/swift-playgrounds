@@ -15,10 +15,8 @@ import AssistantV2
 
 //:## Authentication
 
-let version = "2018-11-08"
 let apiKey = WatsonCredentials.AssistantV2APIKey
-
-let assistant = Assistant(version: version, apiKey: apiKey)
+let assistant = Assistant(version: "2018-11-08", apiKey: apiKey)
 
 //:## Service URL
 
@@ -29,5 +27,34 @@ if let serviceURL = WatsonCredentials.AssistantV2URL {
 
 //:## Error handling
 
-// TODO: Fill this in
+assistant.createSession(assistantID: WatsonCredentials.AssistantV2ID) {
+    response, error in
 
+    if let error = error {
+        switch error {
+        case let .http(statusCode, message, metadata):
+            switch statusCode {
+            case .some(404):
+                // Handle Not Found (404) exception
+                print("Not found")
+            case .some(413):
+                // Handle Request Too Large (413) exception
+                print("Payload too large")
+            default:
+                if let statusCode = statusCode {
+                    print("Error - code: \(statusCode), \(message ?? "")")
+                }
+            }
+        default:
+            print(error.localizedDescription)
+        }
+        return
+    }
+
+    guard let session = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
+        return
+    }
+
+    print(session)
+}

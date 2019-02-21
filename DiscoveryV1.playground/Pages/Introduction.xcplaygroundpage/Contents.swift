@@ -15,10 +15,8 @@ import DiscoveryV1
 
 //:## Authentication
 
-let version = "2018-10-15"
 let apiKey = WatsonCredentials.DiscoveryV1APIKey
-
-let discovery = Discovery(version: version, apiKey: apiKey)
+let discovery = Discovery(version: "2018-12-03", apiKey: apiKey)
 
 //:## Service URL
 
@@ -29,5 +27,34 @@ if let serviceURL = WatsonCredentials.DiscoveryV1URL {
 
 //:## Error handling
 
-// TODO: Fill this in
+discovery.listEnvironments() {
+    response, error in
 
+    if let error = error {
+        switch error {
+        case let .http(statusCode, message, metadata):
+            switch statusCode {
+            case .some(404):
+                // Handle Not Found (404) exception
+                print("Not found")
+            case .some(413):
+                // Handle Request Too Large (413) exception
+                print("Payload too large")
+            default:
+                if let statusCode = statusCode {
+                    print("Error - code: \(statusCode), \(message ?? "")")
+                }
+            }
+        default:
+            print(error.localizedDescription)
+        }
+        return
+    }
+
+    guard let environments = response?.result else {
+        print(error?.localizedDescription ?? "unknown error")
+        return
+    }
+
+    print(environments)
+}

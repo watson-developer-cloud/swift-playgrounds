@@ -15,10 +15,8 @@ import AssistantV1
 
 //:## Authentication
 
-let version = "2018-10-15"
 let apiKey = WatsonCredentials.AssistantV1APIKey
-
-let assistant = Assistant(version: version, apiKey: apiKey)
+let assistant = Assistant(version: "2018-09-20", apiKey: apiKey)
 
 //:## Service URL
 
@@ -29,7 +27,7 @@ if let serviceURL = WatsonCredentials.AssistantV1URL {
 
 //:## Error handling
 
-assistant.getWorkspace(workspaceID: "7777777-1111-dead-beef-ffffffffffff") {
+assistant.getWorkspace(workspaceID: getWorkspaceID()) {
     response, error in
 
     if let error = error {
