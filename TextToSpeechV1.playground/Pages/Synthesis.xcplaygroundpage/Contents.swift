@@ -14,10 +14,10 @@ textToSpeech.synthesize(text: "Hello World", accept: "audio/wav", voice: "en-US_
         return
     }
 
-    let audioFile = playgroundSharedDataDirectory.appendingPathComponent("hello_world.wav")
+    let audioFile = URL(fileURLWithPath: NSTemporaryDirectory() + "hello_world.wav")
     do {
         try audio.write(to: audioFile)
-        print("Audo saved to \(audioFile.lastPathComponent)")
+        print("Audio saved to \(audioFile.lastPathComponent)")
     } catch {
         print("Error writing: \(error)")
     }
