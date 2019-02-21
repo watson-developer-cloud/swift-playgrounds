@@ -9,7 +9,7 @@ public func setupCompareComplyV1() -> CompareComply {
     let compareComply = CompareComply(version: version, apiKey: apiKey)
 
     // Set the URL for the service endpoint if needed
-    if let serviceURL = WatsonCredentials.CompareComplyURL {
+    if let serviceURL = WatsonCredentials.CompareComplyV1URL {
         compareComply.serviceURL = serviceURL
     }
 
