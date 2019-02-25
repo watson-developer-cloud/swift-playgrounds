@@ -117,6 +117,19 @@ discovery.createStopwordList(
     print(tokenDictStatus)
 }
 
+//:### Get stopword list status
+
+discovery.getStopwordListStatus(environmentID: environmentID, collectionID: collectionID) {
+    response, error in
+
+    guard let tokenDictStatus = response?.result else {
+        print(error?.localizedDescription ?? "unexpected error")
+        return
+    }
+
+    print(tokenDictStatus)
+}
+
 //:### Delete a custom stopword list
 
 discovery.deleteStopwordList(environmentID: environmentID, collectionID: collectionID) {
