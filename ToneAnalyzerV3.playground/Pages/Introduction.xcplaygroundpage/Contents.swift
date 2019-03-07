@@ -13,9 +13,10 @@
 
 import ToneAnalyzerV3
 
+let apiKey = WatsonCredentials.ToneAnalyzerV3APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.ToneAnalyzerV3APIKey
 let toneAnalyzer = ToneAnalyzer(version: "2017-09-21", apiKey: apiKey)
 
 //:## Service URL

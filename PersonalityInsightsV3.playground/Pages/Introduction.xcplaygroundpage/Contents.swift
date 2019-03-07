@@ -13,9 +13,10 @@
 
 import PersonalityInsightsV3
 
+let apiKey = WatsonCredentials.PersonalityInsightsV3APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.PersonalityInsightsV3APIKey
 let personalityInsights = PersonalityInsights(version: "2017-10-13", apiKey: apiKey)
 
 //:## Service URL

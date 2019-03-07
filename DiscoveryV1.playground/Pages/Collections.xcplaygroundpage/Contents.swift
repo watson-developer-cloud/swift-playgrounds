@@ -84,6 +84,19 @@ discovery.listCollectionFields(environmentID: environmentID, collectionID: colle
     print(collectionFields)
 }
 
+//:### List fields across collections
+
+discovery.listFields(environmentID: environmentID, collectionIDs: [collectionID]) {
+    response, error in
+
+    guard let fields = response?.result?.fields else {
+        print(error?.localizedDescription ?? "unexpected error")
+        return
+    }
+
+    print(fields)
+}
+
 //:### Delete a collection
 
 discovery.deleteCollection(environmentID: environmentID, collectionID: collectionID) {

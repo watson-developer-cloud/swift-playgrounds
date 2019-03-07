@@ -13,9 +13,10 @@
 
 import CompareComplyV1
 
+let apiKey = WatsonCredentials.CompareComplyV1APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.CompareComplyV1APIKey
 let compareComply = CompareComply(version: "2018-10-15", apiKey: apiKey)
 
 //:## Service URL

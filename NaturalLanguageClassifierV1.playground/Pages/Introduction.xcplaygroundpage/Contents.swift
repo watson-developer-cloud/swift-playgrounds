@@ -13,9 +13,10 @@
 
 import NaturalLanguageClassifierV1
 
+let apiKey = WatsonCredentials.NaturalLanguageClassifierV1APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.NaturalLanguageClassifierV1APIKey
 let naturalLanguageClassifier = NaturalLanguageClassifier(apiKey: apiKey)
 
 //:## Service URL

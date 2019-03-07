@@ -8,32 +8,9 @@ var configurationID = ""
 
 //:### Add configuration
 
-let conversions = Conversions(
-    html: HTMLSettings(
-        excludeTagsKeepContent: ["span"],
-        excludeContent: XPathPatterns(xpaths: ["/home"])
-    ),
-    segment: SegmentSettings(
-        enabled: true,
-        selectorTags: ["h1","h2"]
-    ),
-    jsonNormalizations: [
-        NormalizationOperation(
-            operation: "move",
-            sourceField: "extracted_metadata.title",
-            destinationField: "metadata.title"
-        ),
-        NormalizationOperation(
-            operation: "move",
-            sourceField: "extracted_metadata.author",
-            destinationField: "metadata.author"
-        ),
-        NormalizationOperation(
-            operation: "remove",
-            sourceField: "extracted_metadata"
-        )
-    ]
-)
+let configFile = Bundle.main.url(forResource: "config", withExtension: "json")!
+let configData = Data(contentsOf: configFile)
+let conversions = JSONDecoder().decode(Configuration.self, from: configData).conversions
 discovery.createConfiguration(
     environmentID: environmentID,
     name: "IBM News",

@@ -5,7 +5,9 @@ import DiscoveryV1
 let discovery = setupDiscoveryV1()
 let environmentID = getEnvironmentID()
 let collectionID = getCollectionID(environmentID: environmentID)
+let documentID = getDocumentID(environmentID: environmentID, collectionID: collectionID)
 var queryID = ""
+var exampleID = ""
 
 //:### List training data
 
@@ -22,13 +24,14 @@ discovery.listTrainingData(environmentID: environmentID, collectionID: collectio
 
 //:### Add query to training data
 
-let examples = [TrainingExample(
-                    documentID: "adaf50f1-2526-4fad-b670-7d6e8a42e6e6",
-                    relevance: 2),
-                TrainingExample(
-                    documentID: "63919442-7d5b-4cae-ab7e-56f58b1390fe",
-                    crossReference: "my_id_field:14",
-                    relevance: 4)]
+let examples = [
+    TrainingExample(
+        documentID: "adaf50f1-2526-4fad-b670-7d6e8a42e6e6",
+        relevance: 2),
+    TrainingExample(
+        documentID: "63919442-7d5b-4cae-ab7e-56f58b1390fe",
+        crossReference: "my_id_field:14",
+        relevance: 4)]
 discovery.addTrainingData(
     environmentID: environmentID,
     collectionID: collectionID,
@@ -81,14 +84,13 @@ discovery.listTrainingExamples(
     print(examples)
 }
 
-//;### Add example to training data query
+//:### Add example to training data query
 
-var exampleID = "540411ca-f2fd-4a02-aad4-870e4a430fb1"
 discovery.createTrainingExample(
     environmentID: environmentID,
     collectionID: collectionID,
     queryID: queryID,
-    documentID: exampleID,
+    documentID: documentID,
     crossReference: "my_id_field:12",
     relevance: 3)
 {
@@ -99,6 +101,7 @@ discovery.createTrainingExample(
         return
     }
 
+    exampleID = example.documentID
     print(example)
 }
 

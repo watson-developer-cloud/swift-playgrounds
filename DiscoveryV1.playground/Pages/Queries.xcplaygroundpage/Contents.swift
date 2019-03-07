@@ -9,9 +9,9 @@ let collectionID = getCollectionID(environmentID: environmentID)
 //:### Long collection queries
 
 discovery.query(
-    environmentID: "system", // Built-in news environment
-    collectionID: "news-en", // Built-in news collection
-    query: "enriched_text.concepts.text:Cloud computing")
+    environmentID: environmentID,
+    collectionID: collectionID,
+    query: "relations.action.lemmatized:acquire")
 {
     response, error in
 
@@ -25,7 +25,11 @@ discovery.query(
 
 //:### Query system notices
 
-discovery.queryNotices(environmentID: environmentID, collectionID: collectionID) {
+discovery.queryNotices(
+    environmentID: environmentID,
+    collectionID: collectionID,
+    filter: "entities.text:error")
+{
     response, error in
 
     guard let result = response?.result else {

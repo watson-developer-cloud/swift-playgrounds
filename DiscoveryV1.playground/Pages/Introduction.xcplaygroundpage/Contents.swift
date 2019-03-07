@@ -13,9 +13,10 @@
 
 import DiscoveryV1
 
+let apiKey = WatsonCredentials.DiscoveryV1APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.DiscoveryV1APIKey
 let discovery = Discovery(version: "2018-12-03", apiKey: apiKey)
 
 //:## Service URL

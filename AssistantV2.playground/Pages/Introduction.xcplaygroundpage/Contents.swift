@@ -13,9 +13,10 @@
 
 import AssistantV2
 
+let apiKey = WatsonCredentials.AssistantV2APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.AssistantV2APIKey
 let assistant = Assistant(version: "2018-11-08", apiKey: apiKey)
 
 //:## Service URL
@@ -27,7 +28,7 @@ if let serviceURL = WatsonCredentials.AssistantV2URL {
 
 //:## Error handling
 
-assistant.createSession(assistantID: WatsonCredentials.AssistantV2ID) {
+assistant.createSession(assistantID: "7777777-1111-dead-beef-ffffffffffff") {
     response, error in
 
     if let error = error {

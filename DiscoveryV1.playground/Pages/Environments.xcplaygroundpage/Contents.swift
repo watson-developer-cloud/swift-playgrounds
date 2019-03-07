@@ -3,7 +3,7 @@
 import DiscoveryV1
 
 let discovery = setupDiscoveryV1()
-var environmentID = ""
+var environmentID: String!
 
 //:### List environments
 
@@ -73,19 +73,4 @@ discovery.deleteEnvironment(environmentID: environmentID) {
     }
 
     print(result)
-}
-
-//:### List fields across collections
-
-let collectionID = getCollectionID(environmentID: environmentID)
-
-discovery.listFields(environmentID: environmentID, collectionIDs: [collectionID]) {
-    response, error in
-
-    guard let fields = response?.result?.fields else {
-        print(error?.localizedDescription ?? "unexpected error")
-        return
-    }
-
-    print(fields)
 }

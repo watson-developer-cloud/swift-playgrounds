@@ -13,9 +13,10 @@
 
 import NaturalLanguageUnderstandingV1
 
+let apiKey = WatsonCredentials.NaturalLanguageUnderstandingV1APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.NaturalLanguageUnderstandingV1APIKey
 let naturalLanguageUnderstanding = NaturalLanguageUnderstanding(version: "2018-11-16", apiKey: apiKey)
 
 //:## Service URL

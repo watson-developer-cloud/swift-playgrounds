@@ -13,9 +13,10 @@
 
 import VisualRecognitionV3
 
+let apiKey = WatsonCredentials.VisualRecognitionV3APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.VisualRecognitionV3APIKey
 let visualRecognition = VisualRecognition(version: "2018-03-19", apiKey: apiKey)
 
 //:## Service URL

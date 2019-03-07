@@ -13,9 +13,10 @@
 
 import SpeechToTextV1
 
+let apiKey = WatsonCredentials.SpeechToTextV1APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.SpeechToTextV1APIKey
 let speechToText = SpeechToText(apiKey: apiKey)
 
 //:## Service URL

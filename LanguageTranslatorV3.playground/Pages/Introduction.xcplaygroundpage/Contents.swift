@@ -13,9 +13,10 @@
 
 import LanguageTranslatorV3
 
+let apiKey = WatsonCredentials.LanguageTranslatorV3APIKey
+
 //:## Authentication
 
-let apiKey = WatsonCredentials.LanguageTranslatorV3APIKey
 let languageTranslator = LanguageTranslator(version: "2018-05-01", apiKey: apiKey)
 
 //:## Service URL
