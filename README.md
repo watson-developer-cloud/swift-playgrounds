@@ -66,6 +66,4 @@ When attempting to run a playground, you may encounter an error saying that Xcod
 
 ## License
 
-This project is licensed under Apache 2.0. Full license text is in [LICENSE][LICENSE].
-
-[LICENSE]: https://github.com/mkistler/swift-playgrounds/blob/master/LICENSE)
+This project is licensed under Apache 2.0. Full license text is in [LICENSE](./LICENSE).
