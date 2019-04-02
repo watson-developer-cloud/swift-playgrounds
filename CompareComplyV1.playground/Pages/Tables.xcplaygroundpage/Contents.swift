@@ -6,7 +6,8 @@ let compareComply = setupCompareComplyV1()
 
 //:### Extract a document's tables
 
-let table = Bundle.main.url(forResource: "TestTable", withExtension: "pdf")!
+let url = Bundle.main.url(forResource: "TestTable", withExtension: "pdf")!
+let table = try! Data(contentsOf: url)
 compareComply.extractTables(file: table, fileContentType: "application/pdf") {
     response, error in
 

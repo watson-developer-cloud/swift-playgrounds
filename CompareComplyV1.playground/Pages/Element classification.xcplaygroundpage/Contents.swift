@@ -6,8 +6,9 @@ let compareComply = setupCompareComplyV1()
 
 //:### Classify the elements of a document
 
-let contract = Bundle.main.url(forResource: "contract_A", withExtension: "pdf")!
-compareComply.classifyElements(file: contract) {
+let url = Bundle.main.url(forResource: "contract_A", withExtension: "pdf")!
+let contract = try! Data(contentsOf: url)
+compareComply.classifyElements(file: contract, fileContentType: "application/pdf") {
     response, error in
 
     guard let classification = response?.result else {

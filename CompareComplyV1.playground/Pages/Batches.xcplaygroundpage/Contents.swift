@@ -8,14 +8,16 @@ let compareComply = setupCompareComplyV1()
 
 var newBatchID = ""
 
-let inputCredentialsFile = Bundle.main.url(forResource: "cos_input_creds", withExtension: "json")!
-let outputCredentialsFile = Bundle.main.url(forResource: "cos_output_creds", withExtension: "json")!
+let inputCredentialsURL = Bundle.main.url(forResource: "cos_input_creds", withExtension: "json")!
+let inputCredentials = try! Data(contentsOf: inputCredentialsURL)
+let outputCredentialsURL = Bundle.main.url(forResource: "cos_output_creds", withExtension: "json")!
+let outputCredentials = try! Data(contentsOf: outputCredentialsURL)
 compareComply.createBatch(
     function: "element_classification",
-    inputCredentialsFile: inputCredentialsFile,
+    inputCredentialsFile: inputCredentials,
     inputBucketLocation: "us-geo",
     inputBucketName: "my_cos_input_bucket",
-    outputCredentialsFile: outputCredentialsFile,
+    outputCredentialsFile: outputCredentials,
     outputBucketLocation: "us-geo",
     outputBucketName: "my_cos_output_bucket")
 {
