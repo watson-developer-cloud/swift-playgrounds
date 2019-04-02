@@ -3,7 +3,7 @@
 import AssistantV2
 
 let assistant = setupAssistantV2()
-var assistantID = WatsonCredentials.AssistantV2ID
+let assistantID = WatsonCredentials.AssistantV2ID
 
 //:### Create a session
 
