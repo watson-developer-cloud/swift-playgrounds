@@ -7,7 +7,7 @@ let assistant = setupAssistantV1()
 //:### Get response to user input
 
 let workspaceID = getWorkspaceID()
-let input = InputData(text: "Hello")
+let input = MessageInput(text: "Hello")
 assistant.message(workspaceID: workspaceID, input: input) {
     response, error in
 
