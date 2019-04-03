@@ -20,8 +20,10 @@ naturalLanguageClassifier.listClassifiers() {
 
 //:### Create classifier
 
-let metadata = Bundle.main.url(forResource: "metadata", withExtension: "json")!
-let trainingData = Bundle.main.url(forResource: "weather_data_train", withExtension: "csv")!
+let metadataURL = Bundle.main.url(forResource: "metadata", withExtension: "json")
+let metadata = try! Data(contentsOf: metadataURL!)
+let trainingDataURL = Bundle.main.url(forResource: "weather_data_train", withExtension: "csv")
+let trainingData = try! Data(contentsOf: trainingDataURL!)
 
 naturalLanguageClassifier.createClassifier(metadata: metadata, trainingData: trainingData) {
     response, error in
