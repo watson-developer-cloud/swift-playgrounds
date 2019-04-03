@@ -4,11 +4,14 @@ import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
 var jobId: String = ""
+let callbackURL = "https://watson-test-resources.mybluemix.net/speech-to-text-async/secure/callback"
 
 //:### Register a callback
 
-let url = "https://watson-test-resources.mybluemix.net/speech-to-text-async/secure/callback"
-speechToText.registerCallback(callbackURL: url, userSecret: "ThisIsMySecret") {
+speechToText.registerCallback(
+    callbackURL: callbackURL,
+    userSecret: "ThisIsMySecret")
+{
     response, error in
 
     guard let registerStatus = response?.result else {
@@ -25,10 +28,10 @@ let audio = Bundle.main.url(forResource: "audio-file", withExtension: "flac")!
 
 speechToText.createJob(
     audio: Data(contentsOf: audio),
-    contentType: "audio/flac",
-    callbackURL: url,
+    callbackURL: callbackURL,
     userToken: "job25",
-    timestamps: true)
+    timestamps: true,
+    contentType: "audio/flac")
 {
     response, error in
 

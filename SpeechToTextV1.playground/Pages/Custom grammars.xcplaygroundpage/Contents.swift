@@ -3,16 +3,17 @@
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-let customizationID = "{customization-id}"
+let modelID = getLanguageModelID()
 let grammarName = "list-abnf"
 
 //:### Add a grammar
 
-let grammarFile = Bundle.main.url(forResource: "list", withExtension: "abnf")!
+let url = Bundle.main.url(forResource: "list", withExtension: "abnf")
+let grammarFile = try! String(contentsOf: url!)
 speechToText.addGrammar(
-    customizationID: customizationID,
+    customizationID: modelID,
     grammarName: grammarName,
-    grammarFile: grammarFile.absoluteString,
+    grammarFile: grammarFile,
     contentType: "application/srgs")
 {
     _, error in
@@ -23,11 +24,12 @@ speechToText.addGrammar(
     }
 
     print("successfully added grammar")
+    // Poll for grammar status.
 }
 
 //:### Get a grammar
 
-speechToText.getGrammar(customizationID: customizationID, grammarName: grammarName) {
+speechToText.getGrammar(customizationID: modelID, grammarName: grammarName) {
     response, error in
 
     guard let grammar = response?.result else {
@@ -38,10 +40,9 @@ speechToText.getGrammar(customizationID: customizationID, grammarName: grammarNa
     print(grammar)
 }
 
-
 //:### List grammars
 
-speechToText.listGrammars(customizationID: customizationID) {
+speechToText.listGrammars(customizationID: modelID) {
     response, error in
 
     guard let grammars = response?.result else {
@@ -54,7 +55,7 @@ speechToText.listGrammars(customizationID: customizationID) {
 
 //:### Delete a grammar
 
-speechToText.deleteGrammar(customizationID: customizationID, grammarName: grammarName) {
+speechToText.deleteGrammar(customizationID: modelID, grammarName: grammarName) {
     _, error in
 
     if let error = error {
