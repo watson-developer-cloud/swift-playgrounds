@@ -6,7 +6,7 @@ let textToSpeech = setupTextToSpeechV1()
 
 //:### Synthesize audio
 
-textToSpeech.synthesize(text: "Hello World", accept: "audio/wav", voice: "en-US_AllisonVoice") {
+textToSpeech.synthesize(text: "Hello World", voice: "en-US_AllisonVoice", accept: "audio/wav") {
     response, error in
 
     guard let audio = response?.result else {
