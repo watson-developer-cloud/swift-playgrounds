@@ -73,12 +73,13 @@ discovery.updateConfiguration(
 
 //:### Test configuration
 
-let sample = Bundle.main.url(forResource: "sample1", withExtension: "html")
+let sampleURL = Bundle.main.url(forResource: "sample1", withExtension: "html")!
+let sample = try! Data(contentsOf: sampleURL)
 
 discovery.testConfigurationInEnvironment(
     environmentID: environmentID,
-    configurationID: configurationID,
-    file: sample)
+    file: sample,
+    configurationID: configurationID)
 {
     response, error in
 

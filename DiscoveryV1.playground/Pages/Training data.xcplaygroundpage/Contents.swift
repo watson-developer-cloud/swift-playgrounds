@@ -101,7 +101,7 @@ discovery.createTrainingExample(
         return
     }
 
-    exampleID = example.documentID
+    exampleID = example.documentID ?? ""
     print(example)
 }
 

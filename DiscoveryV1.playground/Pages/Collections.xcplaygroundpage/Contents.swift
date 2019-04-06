@@ -89,7 +89,7 @@ discovery.listCollectionFields(environmentID: environmentID, collectionID: colle
 discovery.listFields(environmentID: environmentID, collectionIDs: [collectionID]) {
     response, error in
 
-    guard let fields = response?.result?.fields else {
+    guard let fields = response?.result else {
         print(error?.localizedDescription ?? "unexpected error")
         return
     }

@@ -55,8 +55,8 @@ discovery.deleteExpansions(environmentID: environmentID, collectionID: collectio
 let tokenizationRule = TokenDictRule(
     text: "すしネコ",
     tokens: ["すし", "ネコ"],
-    readings: ["寿司", "ネコ"],
-    partOfSpeech: "カスタム名詞"
+    partOfSpeech: "カスタム名詞",
+    readings: ["寿司", "ネコ"]
 )
 discovery.createTokenizationDictionary(
     environmentID: environmentID,
@@ -101,11 +101,13 @@ discovery.deleteTokenizationDictionary(environmentID: environmentID, collectionI
 
 //:### Create stopword list
 
-let stopwords = Bundle.main.url(forResource: "stopwords", withExtension: "txt")!
+let stopwordsURL = Bundle.main.url(forResource: "stopwords", withExtension: "txt")!
+let stopwords = try! Data(contentsOf: stopwordsURL)
 discovery.createStopwordList(
     environmentID: environmentID,
     collectionID: collectionID,
-    stopwordFile: stopwords)
+    stopwordFile: stopwords,
+    stopwordFilename: "stopwords.txt")
 {
     response, error in
 
