@@ -20,10 +20,14 @@ visualRecognition.listClassifiers(verbose: true) {
 
 //:### Create a classifier
 
-let beagle = Bundle.main.url(forResource: "beagle", withExtension: "zip")!
-let goldenRetriever = Bundle.main.url(forResource: "golden-retriever", withExtension: "zip")!
-let husky = Bundle.main.url(forResource: "husky", withExtension: "zip")!
-let cats = Bundle.main.url(forResource: "cats", withExtension: "zip")!
+let beagleURL = Bundle.main.url(forResource: "beagle", withExtension: "zip")
+let beagle = try! Data(contentsOf: beagleURL!)
+let goldenRetrieverURL = Bundle.main.url(forResource: "golden-retriever", withExtension: "zip")
+let goldenRetriever = try! Data(contentsOf: goldenRetrieverURL!)
+let huskyURL = Bundle.main.url(forResource: "husky", withExtension: "zip")
+let husky = try! Data(contentsOf: huskyURL!)
+let catsURL = Bundle.main.url(forResource: "cats", withExtension: "zip")
+let cats = try! Data(contentsOf: catsURL!)
 
 visualRecognition.createClassifier(
     name: "dogs",
@@ -60,8 +64,10 @@ visualRecognition.getClassifier(classifierID: classifierID) {
 
 //:### Update a classifier
 
-let dalmatian = Bundle.main.url(forResource: "dalmatian", withExtension: "zip")!
-let moreCats = Bundle.main.url(forResource: "more-cats", withExtension: "zip")!
+let dalmatianURL = Bundle.main.url(forResource: "dalmatian", withExtension: "zip")
+let dalmatian = try! Data(contentsOf: dalmatianURL!)
+let moreCatsURL = Bundle.main.url(forResource: "more-cats", withExtension: "zip")
+let moreCats = try! Data(contentsOf: moreCatsURL!)
 
 visualRecognition.updateClassifier(
     classifierID: classifierID,
