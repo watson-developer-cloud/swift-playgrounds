@@ -10,7 +10,6 @@ let sessionToken = getSessionToken(environmentID: environmentID, collectionID: c
 
 let formatter = DateFormatter()
 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-formatter.date(from: "2018-01-29T14:58:39.470Z")!
 
 //:### Create event
 
@@ -19,7 +18,7 @@ let eventData = EventData(
     sessionToken: sessionToken,
     collectionID: collectionID,
     documentID: documentID,
-    /*clientTimestamp: formatter.date(from: "2018-01-29T14:58:39.470Z")!,*/
+    clientTimestamp: formatter.date(from: "2018-01-29T14:58:39.470Z")!,
     displayRank: 1)
 discovery.createEvent(type: "click", data: eventData) {
     response, error in

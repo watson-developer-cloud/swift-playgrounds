@@ -6,7 +6,8 @@ let visualRecognition = setupVisualRecognitionV3()
 
 //:### Detect faces in images
 
-let ginni = Bundle.main.url(forResource: "Ginni_Rometty", withExtension: "jpg")!
+let url = Bundle.main.url(forResource: "Ginni_Rometty", withExtension: "jpg")
+let ginni = try? Data(contentsOf: url!)
 
 //: Example request with Custom models
 

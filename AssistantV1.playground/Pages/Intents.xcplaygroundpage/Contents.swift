@@ -24,8 +24,8 @@ assistant.createIntent(
     workspaceID: workspaceID,
     intent: "hello",
     examples: [
-        CreateExample(text: "Good morning"),
-        CreateExample(text: "Hi there")
+        Example(text: "Good morning"),
+        Example(text: "Hi there")
     ])
 {
     response, error in
@@ -57,7 +57,7 @@ assistant.updateIntent(
     workspaceID: workspaceID,
     intent: "hello",
     newDescription: "Updated intent",
-    newExamples: [CreateExample(text: "Good afternoon")])
+    newExamples: [Example(text: "Good afternoon")])
 {
     response, error in
 

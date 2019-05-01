@@ -7,7 +7,11 @@ var customizationID: String = ""
 
 //:### Create a custom model
 
-textToSpeech.createVoiceModel(name: "First Model", language: "en-US", description: "First custom voice model") {
+textToSpeech.createVoiceModel(
+    name: "First Model",
+    language: "en-US",
+    description: "First custom voice model")
+{
     response, error in
 
     guard let model = response?.result else {

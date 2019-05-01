@@ -9,12 +9,14 @@ var documentID = ""
 
 //:### Add a document
 
-let sample1 = Bundle.main.url(forResource: "sample1", withExtension: "html")
+let url = Bundle.main.url(forResource: "sample1", withExtension: "html")!
+let sample1 = try! Data(contentsOf: url)
 
 discovery.addDocument(
     environmentID: environmentID,
     collectionID: collectionID,
-    file: sample1)
+    file: sample1,
+    filename: "sample1.html")
 {
     response, error in
 

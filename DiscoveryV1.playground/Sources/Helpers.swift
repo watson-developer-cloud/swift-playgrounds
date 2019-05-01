@@ -1,3 +1,6 @@
+
+// If you get a build error on the import statement below, comment out all lines of this file (Cmd-A, Cmd-/)
+// and then build the framework. Then uncomment all lines again and the error should be resolved.
 import DiscoveryV1
 
 public func setupDiscoveryV1() -> Discovery {
@@ -130,7 +133,8 @@ public func getDocumentID(environmentID: String, collectionID: String) -> String
 
         documentID = result.results?.first?.id
         if documentID == nil {
-            let sample1 = Bundle.main.url(forResource: "sample1", withExtension: "html")
+            let url = Bundle.main.url(forResource: "sample1", withExtension: "html")
+            let sample1 = try! Data(contentsOf: url!)
 
             discovery.addDocument(environmentID: environmentID, collectionID: collectionID, file: sample1) {
                 response, error in

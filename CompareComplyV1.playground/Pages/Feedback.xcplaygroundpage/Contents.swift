@@ -3,10 +3,9 @@
 import CompareComplyV1
 
 let compareComply = setupCompareComplyV1()
+var feedbackID = ""
 
 //:### Add feedback
-
-var newFeedbackID = ""
 
 let location = Location(begin: 214, end: 237)
 let text = """
@@ -34,26 +33,20 @@ let originalCategory2 = CompareComplyV1.Category(
 let originalLabels = OriginalLabelsIn(types: [originalType1, originalType2], categories: [originalCategory1, originalCategory2])
 
 let updatedType1 = TypeLabel(
-    label: Label(nature: "Obligation", party: "IBM"),
-    provenanceIDs: nil
+    label: Label(nature: "Obligation", party: "IBM")
 )
 let updatedType2 = TypeLabel(
-    label: Label(nature: "Disclaimer", party: "Buyer"),
-    provenanceIDs: nil
+    label: Label(nature: "Disclaimer", party: "Buyer")
 )
 let updatedCategory1 = CompareComplyV1.Category(
-    label: "Responsibilities",
-    provenanceIDs: nil
+    label: "Responsibilities"
 )
 let updatedCategory2 = CompareComplyV1.Category(
-    label: "Audits",
-    provenanceIDs: nil
+    label: "Audits"
 )
 let updatedLabels = UpdatedLabelsIn(types: [updatedType1, updatedType2], categories: [updatedCategory1, updatedCategory2])
 
 let document = ShortDoc(title: "Legal Approval SOW", hash: "91edc2ff254d29f7a4922635ad47276a")
-let modelID = "contracts"
-let modelVersion = "2.0.1"
 
 let feedbackData = FeedbackDataInput(
     feedbackType: "element_classification",
@@ -62,8 +55,8 @@ let feedbackData = FeedbackDataInput(
     originalLabels: originalLabels,
     updatedLabels: updatedLabels,
     document: document,
-    modelID: modelID,
-    modelVersion: modelVersion)
+    modelID: "contracts",
+    modelVersion: "2.0.1")
 
 compareComply.addFeedback(
     feedbackData: feedbackData,
@@ -77,7 +70,7 @@ compareComply.addFeedback(
         return
     }
 
-    newFeedbackID = feedback.feedbackID ?? ""
+    feedbackID = feedback.feedbackID ?? ""
     print(feedback)
 }
 
@@ -96,7 +89,7 @@ compareComply.listFeedback() {
 
 //:### List a specified feedback entry
 
-compareComply.getFeedback(feedbackID: newFeedbackID) {
+compareComply.getFeedback(feedbackID: feedbackID) {
     response, error in
 
     guard let feedback = response?.result else {
@@ -109,11 +102,11 @@ compareComply.getFeedback(feedbackID: newFeedbackID) {
 
 //:### Delete a specified feedback entry
 
-compareComply.deleteFeedback(feedbackID: newFeedbackID) {
+compareComply.deleteFeedback(feedbackID: feedbackID) {
     _, error in
 
     if let error = error {
-        print(error)
+        print(error.localizedDescription)
         return
     }
 

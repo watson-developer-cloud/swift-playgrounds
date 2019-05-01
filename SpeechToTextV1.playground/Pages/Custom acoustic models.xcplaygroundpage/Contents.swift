@@ -60,6 +60,7 @@ speechToText.trainAcousticModel(customizationID: modelID) {
     }
 
     print("Training of the custom acoustic model started successfully.")
+    // Poll for acoustic model status.
 }
 
 //:### Reset a custom acoustic model
@@ -86,6 +87,7 @@ speechToText.upgradeAcousticModel(customizationID: modelID) {
     }
 
     print("Upgrade of the custom acoustic model has started successfully.")
+    // Poll for acoustic model status.
 }
 
 //:### Delete a custom acoustic model

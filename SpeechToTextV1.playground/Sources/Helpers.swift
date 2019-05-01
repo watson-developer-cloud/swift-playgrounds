@@ -14,8 +14,8 @@ public func setupSpeechToTextV1() -> SpeechToText {
     return speechToText
 }
 
-// Return a modelID
-public func getModelID() -> String {
+// Return a language modelID
+public func getLanguageModelID() -> String {
 
     let speechToText = setupSpeechToTextV1()
 
@@ -31,6 +31,43 @@ public func getModelID() -> String {
         modelID = result.customizations.first?.customizationID
         if modelID == nil {
             speechToText.createLanguageModel(name: "Example language model", baseModelName: "en-US_BroadbandModel", description: "Custom language model example") {
+                response, error in
+
+                guard let model = response?.result else {
+                    print(error?.localizedDescription ?? "unknown error")
+                    return
+                }
+
+                modelID = model.customizationID
+            }
+        }
+    }
+
+    while modelID == nil { sleep(1) }
+    return modelID!
+}
+
+// Return an acoustic modelID
+public func getAcousticModelID() -> String {
+
+    let speechToText = setupSpeechToTextV1()
+
+    var modelID: String?
+    speechToText.listAcousticModels() {
+        response, error in
+
+        guard let result = response?.result else {
+            assertionFailure(error?.localizedDescription ?? "unknown error")
+            return
+        }
+
+        modelID = result.customizations.first?.customizationID
+        if modelID == nil {
+            speechToText.createAcousticModel(
+                name: "Example acoustic model",
+                baseModelName: "en-US_BroadbandModel",
+                description: "Custom acoustic model example")
+            {
                 response, error in
 
                 guard let model = response?.result else {

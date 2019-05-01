@@ -6,14 +6,17 @@ let speechToText = setupSpeechToTextV1()
 
 //:### Recognize audio
 
-let audio = Bundle.main.url(forResource: "audio-file", withExtension: "flac")!
-var settings = RecognitionSettings(contentType: "audio/flac")
-settings.timestamps = true
-settings.wordAlternativesThreshold = 0.90
-settings.keywords = ["colorado", "tornado", "tornadoes"]
-settings.keywordsThreshold = 0.5
+let url = Bundle.main.url(forResource: "audio-file", withExtension: "flac")
+var audio = try! Data(contentsOf: url!)
 
-speechToText.recognize(audio: audio, settings: settings) {
+speechToText.recognize(
+    audio: audio,
+    keywords: ["colorado", "tornado", "tornadoes"],
+    keywordsThreshold: 0.5,
+    wordAlternativesThreshold: 0.90,
+    timestamps: true,
+    contentType: "audio/flac")
+{
     response, error in
 
     guard let results = response?.result else {

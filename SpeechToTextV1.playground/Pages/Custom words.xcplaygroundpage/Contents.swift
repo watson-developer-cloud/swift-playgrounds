@@ -3,7 +3,7 @@
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var modelID = getModelID()
+var modelID = getLanguageModelID()
 
 //:### List custom words
 
@@ -33,6 +33,7 @@ speechToText.addWords(customizationID: modelID, words: words) {
     }
 
     print("Addition of the custom words was successfully started.")
+    // Poll for language model status.
 }
 
 //:### Add custom word
@@ -64,7 +65,6 @@ speechToText.getWord(customizationID: modelID, wordName: "NCAA") {
     }
 
     print(word)
-
 }
 
 //:### Delete a custom word

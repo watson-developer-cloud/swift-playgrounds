@@ -3,7 +3,7 @@
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var modelID = getModelID()
+var modelID = getLanguageModelID()
 
 //:### List corpora
 
@@ -20,7 +20,8 @@ speechToText.listCorpora(customizationID: modelID) {
 
 //:### Add a corpus
 
-let corpus1 = Bundle.main.url(forResource: "corpus1", withExtension: "txt")!
+let url = Bundle.main.url(forResource: "corpus1", withExtension: "txt")
+let corpus1 = try! Data(contentsOf: url!)
 speechToText.addCorpus(customizationID: modelID, corpusName: "corpus1", corpusFile: corpus1) {
     _, error in
 
@@ -30,6 +31,7 @@ speechToText.addCorpus(customizationID: modelID, corpusName: "corpus1", corpusFi
     }
 
     print("Addition of the corpus data was successfully started.")
+    // Poll for corpus status.
 }
 
 //:### Get a corpus

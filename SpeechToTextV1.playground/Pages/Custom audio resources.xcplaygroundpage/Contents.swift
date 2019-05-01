@@ -3,11 +3,11 @@
 import SpeechToTextV1
 
 let speechToText = setupSpeechToTextV1()
-var customizationID = "<your-customization-ID-here>"
+var modelID = getAcousticModelID()
 
 //:### List audio resources
 
-speechToText.listAudio(customizationID: customizationID) {
+speechToText.listAudio(customizationID: modelID) {
     response, error in
 
     guard let resources = response?.result else {
@@ -22,7 +22,7 @@ speechToText.listAudio(customizationID: customizationID) {
 
 let audio1 = Data(contentsOf: Bundle.main.url(forResource: "audio1", withExtension: "wav")!)
 speechToText.addAudio(
-    customizationID: customizationID,
+    customizationID: modelID,
     audioName: "audio1",
     audioResource: audio1,
     contentType: "audio/wav")
@@ -35,11 +35,12 @@ speechToText.addAudio(
     }
 
     print("Addition of the audio resource was successfully started.")
+    // Poll for audio status.
 }
 
 //:### Get an audio resource
 
-speechToText.getAudio(customizationID: customizationID, audioName: "audio1") {
+speechToText.getAudio(customizationID: modelID, audioName: "audio1") {
     response, error in
 
     guard let listing = response?.result else {
@@ -52,7 +53,7 @@ speechToText.getAudio(customizationID: customizationID, audioName: "audio1") {
 
 //:### Delete an audio resource
 
-speechToText.deleteAudio(customizationID: customizationID, audioName: "audio1") {
+speechToText.deleteAudio(customizationID: modelID, audioName: "audio1") {
     _, error in
 
     if let error = error {

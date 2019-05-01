@@ -6,7 +6,8 @@ let visualRecognition = setupVisualRecognitionV3()
 
 //:### Classify an image
 
-let fruitbowl = Bundle.main.url(forResource: "fruitbowl", withExtension: "jpg")
+let url = Bundle.main.url(forResource: "fruitbowl", withExtension: "jpg")
+let fruitbowl = try? Data(contentsOf: url!)
 
 //: Example request with Custom models
 

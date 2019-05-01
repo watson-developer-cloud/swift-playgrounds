@@ -67,3 +67,9 @@ extension TranslationModels: CustomStringConvertible {
         return prettyPrint(object: self) ?? "broke"
     }
 }
+
+extension TranslationModel: CustomStringConvertible {
+    public var description: String {
+        return prettyPrint(object: self) ?? "broke"
+    }
+}

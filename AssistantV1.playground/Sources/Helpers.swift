@@ -68,8 +68,8 @@ public func createSampleIntent(workspaceID: String) {
                 workspaceID: workspaceID,
                 intent: sampleIntent,
                 examples: [
-                    CreateExample(text: "Good afternoon"),
-                    CreateExample(text: "Hi there")
+                    Example(text: "Good afternoon"),
+                    Example(text: "Hi there")
                 ])
             {
                 _, error in
@@ -194,12 +194,6 @@ extension Workspace: CustomStringConvertible {
     }
 }
 
-extension WorkspaceExport: CustomStringConvertible {
-    public var description: String {
-        return prettyPrint(object: self) ?? "broke"
-    }
-}
-
 // Intents
 
 extension IntentCollection: CustomStringConvertible {
@@ -209,12 +203,6 @@ extension IntentCollection: CustomStringConvertible {
 }
 
 extension Intent: CustomStringConvertible {
-    public var description: String {
-        return prettyPrint(object: self) ?? "broke"
-    }
-}
-
-extension IntentExport: CustomStringConvertible {
     public var description: String {
         return prettyPrint(object: self) ?? "broke"
     }
@@ -262,12 +250,6 @@ extension Entity: CustomStringConvertible {
     }
 }
 
-extension EntityExport: CustomStringConvertible {
-    public var description: String {
-        return prettyPrint(object: self) ?? "broke"
-    }
-}
-
 // Mentions
 
 extension EntityMentionCollection: CustomStringConvertible {
@@ -285,12 +267,6 @@ extension ValueCollection: CustomStringConvertible {
 }
 
 extension Value: CustomStringConvertible {
-    public var description: String {
-        return prettyPrint(object: self) ?? "broke"
-    }
-}
-
-extension ValueExport: CustomStringConvertible {
     public var description: String {
         return prettyPrint(object: self) ?? "broke"
     }

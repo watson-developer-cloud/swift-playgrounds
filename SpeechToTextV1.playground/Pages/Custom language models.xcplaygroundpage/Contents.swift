@@ -60,6 +60,7 @@ speechToText.trainLanguageModel(customizationID: modelID) {
     }
 
     print("Training of the custom language model started successfully.")
+    // Poll for language model status.
 }
 
 //:### Reset a custom language model
@@ -86,6 +87,7 @@ speechToText.upgradeLanguageModel(customizationID: modelID) {
     }
 
     print("Upgrade of the custom language model has started successfully.")
+    // Poll for language model status.
 }
 
 //:### Delete a custom language model

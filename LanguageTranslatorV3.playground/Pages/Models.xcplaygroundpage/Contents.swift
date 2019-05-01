@@ -20,9 +20,9 @@ languageTranslator.listModels() {
 
 //:### Create model
 
-let glossary = Bundle.main.url(forResource: "glossary", withExtension: "tmx")
-
-languageTranslator.createModel(baseModelID: "en-es", name: "custom-en-es", forcedGlossary: glossary) {
+let glossaryURL = Bundle.main.url(forResource: "glossary", withExtension: "tmx")
+let glossary = try! Data(contentsOf: glossaryURL!)
+languageTranslator.createModel(baseModelID: "en-es", forcedGlossary: glossary, name: "custom-en-es") {
     response, error in
 
     guard let model = response?.result else {
