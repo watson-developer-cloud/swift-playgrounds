@@ -4,7 +4,7 @@ import LanguageTranslatorV3
 public func setupLanguageTranslatorV3() -> LanguageTranslator {
 
     let version = "2018-10-15"
-    let apiKey = WatsonCredentials.LanguageTranslatorV3APIKey
+    let apiKey = WatsonCredentials.LanguageTranslatorV3APIKey!
 
     let languageTranslator = LanguageTranslator(version: version, apiKey: apiKey)
 
