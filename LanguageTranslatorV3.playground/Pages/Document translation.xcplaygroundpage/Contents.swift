@@ -20,7 +20,7 @@ languageTranslator.listDocuments() {
     print(documents)
 }
 
-//:### Translate documents
+//:### Translate document
 
 let testDocument = Bundle.main.url(forResource: "test-document", withExtension: "txt")
 let testData = try! Data(contentsOf: testDocument!)
@@ -54,8 +54,8 @@ languageTranslator.getDocumentStatus(documentID: testDocumentID) {
 languageTranslator.deleteDocument(documentID: testDocumentID) {
     response, error in
     
-    if (response?.statusCode != 204) {
-        print(error?.localizedDescription ?? "unknown error")
+    if let error = error {
+        print(error.localizedDescription ?? "unknown error")
         return
     }
     
