@@ -55,7 +55,7 @@ languageTranslator.deleteDocument(documentID: testDocumentID) {
     response, error in
     
     if let error = error {
-        print(error.localizedDescription ?? "unknown error")
+        print(error.localizedDescription)
         return
     }
     
