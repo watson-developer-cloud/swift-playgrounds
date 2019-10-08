@@ -40,6 +40,9 @@
    <FileRef
       location = "group:VisualRecognitionV3.playground">
    </FileRef>
+   <FileRef
+      location = "group:VisualRecognitionV4.playground">
+   </FileRef>
    <Group
       location = "container:"
       name = "Sources">
@@ -48,10 +51,10 @@
       </FileRef>
    </Group>
    <FileRef
-      location = "group:Carthage/Checkouts/Swift-SDK/WatsonDeveloperCloud.xcodeproj">
+      location = "group:Carthage/Checkouts/swift-sdk/WatsonDeveloperCloud.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/RestKit/RestKit.xcodeproj">
+      location = "group:Carthage/Checkouts/swift-sdk-core/IBMSwiftSDKCore.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Carthage/Checkouts/Starscream/Starscream.xcodeproj">
